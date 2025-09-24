@@ -11,30 +11,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/assets/p1.png" imagesrcset="/assets/p1.png 1x" />
   <link href="/assets/styles.css" rel="stylesheet">
   <style>
-    :root {
-      --brand: #1e40af;           /* deep blue */
-      --brand-600: #1d4ed8;       /* hover blue */
-      --brand-50: #eef2ff;        /* soft tint */
-      --brand-light: #3b82f6;     /* lighter blue for accents */
-      --ink: #0f172a;
-      --muted: #64748b;
-      --card: #ffffff;
+    /* Brand tokens (adjust to taste) */
+    :root{
+      --brand:#1e40af;      /* deep blue */
+      --brand-600:#1d4ed8;  /* hover */
+      --brand-50:#eef2ff;
+      --ink:#0f172a;
+      --muted:#64748b;
       --ring: 0 4px 20px rgba(0, 0, 0, 0.08);
       --section-padding: 80px 0;
     }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      color: var(--ink);
     }
     
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
+      color: var(--ink);
     }
     
     .text-brand { color: var(--brand) !important; }
+    .text-muted { color: var(--muted) !important; }
+    
     .btn-brand { 
       background: var(--brand); 
       color: #fff; 
@@ -48,21 +52,42 @@
       background: var(--brand-600); 
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+      color: #fff !important;
     }
-    .bg-brand-50 { background: var(--brand-50); }
-    .shadow-soft { box-shadow: var(--ring); }
-    .section { padding: var(--section-padding); }
     
+    .btn-outline-primary {
+      --bs-btn-color: var(--brand);
+      --bs-btn-border-color: var(--brand);
+      --bs-btn-hover-bg: var(--brand);
+      --bs-btn-hover-border-color: var(--brand);
+      --bs-btn-hover-color: #fff;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.2);
+    }
+    
+    .bg-brand-50 { background: var(--brand-50); }
+    .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .section { padding: var(--section-padding); }
+
     /* Improved Navbar */
     .navbar {
       padding: 16px 0;
       transition: all 0.3s ease;
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      background: #fff !important;
     }
     
     .navbar-brand {
       font-weight: 700;
       font-size: 1.4rem;
+      color: var(--brand) !important;
     }
     
     .navbar .nav-link {
@@ -70,11 +95,12 @@
       padding: 8px 16px;
       border-radius: 6px;
       transition: all 0.2s ease;
+      color: var(--ink) !important;
     }
     
     .navbar .nav-link:hover {
       background: var(--brand-50);
-      color: var(--brand);
+      color: var(--brand) !important;
     }
     
     .navbar .dropdown-menu {
@@ -82,160 +108,127 @@
       border: none;
       box-shadow: var(--ring);
       padding: 8px;
+      background: #fff;
     }
     
     .dropdown-item {
       border-radius: 6px;
       padding: 8px 12px;
       margin: 2px 0;
+      color: var(--ink);
+      transition: all 0.2s ease;
     }
     
     .dropdown-item:hover {
       background: var(--brand-50);
       color: var(--brand);
     }
-    
-    /* Enhanced Hero Section */
-    .hero-carousel {
+
+    /* Hero Section */
+    .hero-section{
+      background:
+        radial-gradient(1200px 600px at 80% -10%, var(--brand-50), transparent),
+        linear-gradient(180deg, #fff, #f8fafc);
       position: relative;
       overflow: hidden;
-      margin-top: 0;
     }
-    
-    .hero-carousel .carousel,
-    .hero-carousel .carousel-inner,
-    .hero-carousel .carousel-item {
-      height: min(85vh, 800px);
-    }
-    
-    @media (max-width: 768px) { 
-      .hero-carousel .carousel-item { 
-        height: 75vh; 
-      } 
-    }
-    
-    .hero-slide {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-    
-    .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.9);
-    }
-    
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.4) 100%);
-    }
-    
-    .hero-content {
-      position: absolute;
-      inset: 0;
+
+    .hero-content-col{ 
+      min-height: clamp(520px, 72vh, 760px);
       display: flex;
       align-items: center;
-      text-align: left;
-      color: #fff;
     }
     
-    .hero-content .inner {
-      max-width: 980px;
-      padding-left: 40px;
+    .hero-image-col{  
+      min-height: clamp(520px, 72vh, 760px); 
+      position: relative;
+      overflow: hidden;
     }
-    
-    .hero-content .badge {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 50px;
+
+    .hero-content-wrapper{ 
+      padding: clamp(24px, 6vw, 56px);
+      width: 100%;
     }
-    
-    .hero-content h1 {
-      font-size: 3.5rem;
+
+    .hero-content {
+      color: var(--ink);
+    }
+
+    .hero-content h2 {
+      color: var(--ink);
       font-weight: 700;
+      font-size: 3rem;
       line-height: 1.2;
-      margin: 20px 0;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 1.5rem;
     }
-    
+
     .hero-content .lead {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      opacity: 0.9;
+      color: var(--muted);
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .badge{
+      background: var(--brand-50); 
+      color: var(--brand); 
+      font-weight: 600;
+      border-radius: 999px; 
+      padding: .4rem .75rem;
+      border: 1px solid rgba(30, 64, 175, 0.2);
+    }
+
+    .hero-image-wrapper{ 
+      height: 100%; 
+      width: 100%; 
+      padding: clamp(16px, 3vw, 32px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    @media (max-width: 768px) {
-      .hero-content .inner {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero-content .lead {
-        font-size: 1.1rem;
-      }
+    .hero-image{
+      display:block; 
+      width:100%; 
+      height:100%; 
+      object-fit: cover;
+      border-radius: 16px; 
+      box-shadow: 0 20px 50px rgba(0,0,0,.15);
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .hero-nav-wrapper{
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between;
+      gap:1rem; 
+      margin-top:1rem;
     }
     
-    .btn-outline-light {
-      --bs-btn-color: #fff;
-      --bs-btn-border-color: #fff;
-      --bs-btn-hover-bg: #fff;
-      --bs-btn-hover-color: var(--brand);
-      border-radius: 8px;
-      padding: 12px 24px;
-      font-weight: 500;
+    .hero-indicators{ display:flex; gap:.5rem; }
+    .hero-indicators > button{
+      width:12px; height:12px; border-radius:999px; border:0;
+      background:#e2e8f0; box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .hero-indicators > button.active{ background: var(--brand); }
+
+    /* Carousel controls */
+    .hero-control-prev, .hero-control-next{
+      width:40px; height:40px; border-radius:999px; border:1px solid #e2e8f0; background:#fff;
+      color: var(--brand);
       transition: all 0.3s ease;
     }
-    
-    .btn-outline-light:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    .hero-control-prev:hover, .hero-control-next:hover{ background:#f8fafc; }
+
+    /* Respect reduced motion preferences: stop auto sliding visuals */
+    @media (prefers-reduced-motion: reduce){
+      .carousel{ transition: none !important; }
     }
-    
-    .carousel-indicators button {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin: 0 6px;
-      border: 2px solid transparent;
-      background: rgba(255, 255, 255, 0.5);
-      transition: all 0.3s ease;
-    }
-    
-    .carousel-indicators button.active {
-      background: #fff;
-      width: 30px;
-      border-radius: 10px;
-    }
-    
-    .carousel-control-prev, .carousel-control-next {
-      width: 60px;
-      height: 60px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
-      margin: 0 20px;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    
-    .hero-carousel:hover .carousel-control-prev,
-    .hero-carousel:hover .carousel-control-next {
-      opacity: 1;
-    }
-    
-    /* Improved Services Section */
+
+    /* Services Section */
     .services-section .feature {
       width: 70px;
       height: 70px;
@@ -261,15 +254,20 @@
     
     .services-section .card:hover {
       transform: translateY(-8px);
-      box-shadow: var(--ring);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
     }
     
     .services-section h5 {
       font-size: 1.3rem;
       margin-bottom: 12px;
+      color: var(--ink);
     }
     
-    /* Enhanced USP Cards */
+    .services-section p {
+      color: var(--muted);
+    }
+
+    /* USP Cards */
     .usp-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: none;
@@ -282,7 +280,7 @@
     
     .usp-card:hover {
       transform: translateY(-5px);
-      box-shadow: var(--ring);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     }
     
     .usp-card i {
@@ -297,12 +295,22 @@
       margin-right: 12px;
     }
     
+    .usp-card strong {
+      color: var(--ink);
+    }
+    
+    .usp-card .small {
+      color: var(--muted);
+    }
+
     /* Testimonials */
     .tquote {
       background: #fff;
       border: none !important;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       position: relative;
+      border-radius: 16px;
+      padding: 32px;
     }
     
     .tquote:before {
@@ -327,26 +335,25 @@
     .tquote p {
       position: relative;
       z-index: 1;
+      color: var(--ink);
+      margin: 16px 0;
     }
-    
+
     /* CTA Section */
     .cta-section {
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-600) 100%);
       color: white;
       border-radius: 20px;
       overflow: hidden;
       position: relative;
     }
     
-    .cta-section:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-      background-size: cover;
+    .cta-section h2 {
+      color: #fff;
+    }
+    
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
     }
     
     .cta-section .btn {
@@ -365,87 +372,8 @@
       color: var(--brand);
       transform: translateY(-2px);
     }
-    
-    /* Vendor Marquee Improvements */
-    .vendor-marquee {
-      background: var(--brand-50);
-      border-radius: 20px;
-      padding: 40px;
-    }
-    
-    .vendor-marquee .vwrap {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    
-    .vendor-marquee .vtrack {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-      padding: 24px 0;
-      margin: 0;
-      animation: scrollx 30s linear infinite;
-    }
-    
-    .vendor-marquee .vitem {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      min-width: 200px;
-    }
-    
-    .vendor-marquee .vitem img {
-      display: block;
-      width: 160px;
-      height: 60px;
-      object-fit: contain;
-      transition: all 0.3s ease;
-    }
-    
-    .vendor-marquee .vitem:hover img {
-      filter: none;
-      transform: scale(1.05);
-    }
-    
-    .vendor-marquee .vname {
-      font-size: 0.85rem;
-      color: #475569;
-      font-weight: 500;
-    }
-    
-    @keyframes scrollx {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    /* Featured Projects */
-    .featured-project .card {
-      border: none;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-    
-    .featured-project .card img {
-      border-radius: 12px;
-      transition: all 0.5s ease;
-    }
-    
-    .featured-project .card:hover img {
-      transform: scale(1.05);
-    }
-    
-    .featured-project .card-body {
-      padding: 20px 0 0 0;
-    }
-    
-    /* Footer Improvements */
+
+    /* Footer */
     footer {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     }
@@ -472,7 +400,7 @@
     footer .bi {
       font-size: 1.2rem;
     }
-    
+
     /* Reveal animations */
     .reveal {
       opacity: 0;
@@ -484,15 +412,15 @@
       opacity: 1;
       transform: none;
     }
-    
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .section {
         padding: 60px 0;
       }
       
-      .hero-content h1 {
-        font-size: 2.2rem;
+      .hero-content h2 {
+        font-size: 2.5rem;
       }
       
       .hero-content .lead {
@@ -509,105 +437,286 @@
       }
     }
 
-    /* Process Link Card */
-    .process-link-card {
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3);
-      margin: 2rem 0;
-      min-height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+    /* Enhanced Process Section */
+    .process-showcase-card {
+      background: linear-gradient(135deg, var(--brand-50) 0%, rgba(255, 255, 255, 0.9) 100%);
+      border-radius: 24px;
+      padding: clamp(40px, 8vw, 80px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
     }
 
-    .process-link-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 60px rgba(30, 64, 175, 0.4);
-    }
-
-    .process-link-bg {
+    .process-bg-pattern {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,50 L0,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
-      background-size: cover;
-      opacity: 0.5;
+      opacity: 0.03;
+      background-image:
+        radial-gradient(circle at 20% 80%, var(--brand) 2px, transparent 2px),
+        radial-gradient(circle at 80% 20%, var(--brand) 2px, transparent 2px),
+        radial-gradient(circle at 40% 40%, var(--brand) 1px, transparent 1px);
+      background-size: 60px 60px, 80px 80px, 100px 100px;
+      pointer-events: none;
     }
 
-    .process-link-content {
+    /* Process Steps */
+    .process-steps {
+      position: relative;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 0;
+      position: relative;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .process-step.active {
+      opacity: 1;
+    }
+
+    .process-step::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 40px;
+      bottom: -20px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--brand), var(--brand-50));
+      opacity: 0.3;
+    }
+
+    .process-step:last-child::before {
+      display: none;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-600));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+      flex-shrink: 0;
       position: relative;
       z-index: 2;
-      text-align: center;
+    }
+
+    .process-step.active .step-number {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .step-content h6 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Process Content */
+    .process-icon-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .process-icon {
-      font-size: 3rem;
-      color: rgba(255, 255, 255, 0.8);
-      animation: float 3s ease-in-out infinite;
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-600));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(30, 64, 175, 0.3);
     }
 
-    .process-link-content .btn {
-      background: rgba(255, 255, 255, 0.95);
-      border: none;
+    .badge-process {
+      background: rgba(30, 64, 175, 0.1);
       color: var(--brand);
-      padding: 12px 30px;
-      border-radius: 50px;
       font-weight: 600;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(30, 64, 175, 0.2);
     }
 
-    .process-link-content .btn:hover {
-      background: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    /* Process Stats */
+    .process-stats {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
+    .stat-item {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Process Decorations */
     .process-decoration {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       pointer-events: none;
-      z-index: 1;
+      overflow: hidden;
     }
 
-    .step-dot {
+    .decoration-line {
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.3);
+      background: linear-gradient(45deg, transparent, rgba(30, 64, 175, 0.1), transparent);
+    }
+
+    .decoration-line-1 {
+      top: 20%;
+      left: -10%;
+      width: 120%;
+      height: 1px;
+      transform: rotate(-2deg);
+    }
+
+    .decoration-line-2 {
+      bottom: 30%;
+      right: -10%;
+      width: 100%;
+      height: 1px;
+      transform: rotate(1deg);
+    }
+
+    .decoration-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
+      background: rgba(30, 64, 175, 0.2);
     }
 
-    .step-1 { top: 30px; left: 30px; animation-delay: 0s; }
-    .step-2 { top: 30px; right: 30px; animation-delay: 0.5s; }
-    .step-3 { bottom: 30px; left: 50%; transform: translateX(-50%); animation-delay: 1s; }
-
-    .step-connector {
-      position: absolute;
-      top: 34px;
-      left: 38px;
-      right: 38px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    .decoration-dot-1 {
+      top: 15%;
+      left: 10%;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    .decoration-dot-2 {
+      top: 60%;
+      right: 15%;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.2); }
+    .decoration-dot-3 {
+      bottom: 20%;
+      left: 70%;
+    }
+
+    /* Animations */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 8px 20px rgba(30, 64, 175, 0.5);
+        transform: scale(1.05);
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 991px) {
+      .process-showcase-card {
+        padding: 40px 20px;
+      }
+
+      .process-steps {
+        max-width: 400px;
+        margin: 0 auto 2rem;
+      }
+
+      .process-step {
+        padding: 16px 0;
+      }
+
+      .step-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+
+      .process-stats {
+        gap: 16px;
+      }
+
+      .stat-item {
+        min-width: 70px;
+      }
+
+      .stat-number {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .process-stats {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        min-width: unset;
+      }
+
+      .stat-number {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+      }
+
+      .stat-label {
+        text-align: left;
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -649,98 +758,161 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero-carousel">
-  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    </div>
-    <div class="carousel-inner">
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <div class="hero-slide">
-          <img src="/assets/p1.png" alt="Completed villa exterior" fetchpriority="high" decoding="async">
-          <div class="hero-overlay" aria-hidden="true"></div>
-          <div class="hero-content">
-            <div class="inner">
-              <span class="badge">20 Years of Materials Expertise</span>
-              <h1>Turnkey Construction. On-Time. Transparent.</h1>
-              <p class="lead">Daily updates • CCTV • 7ft basements • QA</p>
-              <div class="d-flex gap-3 btn-group">
-                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Request Site Visit</a>
-                <a href="/projects.html" class="btn btn-outline-light btn-lg">View Projects</a>
+<section id="home-hero" class="hero-section" aria-labelledby="hero-heading">
+  <div class="container-fluid">
+    <div class="row g-0 align-items-stretch">
+      <!-- Left: Content (DRIVER CAROUSEL) -->
+      <div class="col-lg-6 hero-content-col">
+        <div class="hero-content-wrapper h-100 d-flex flex-column">
+          <div id="heroCarouselContent"
+               class="carousel slide carousel-fade flex-grow-1"
+               data-bs-ride="carousel"
+               data-bs-interval="6000"
+               aria-roledescription="carousel"
+               aria-label="Headline highlights"
+               aria-live="polite">
+            <h1 id="hero-heading" class="visually-hidden">Turnkey construction in Chennai</h1>
+
+            <div class="carousel-inner">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+                <div class="hero-content">
+                  <span class="badge">20 Years of Materials Expertise</span>
+                  <h2 class="display-4 fw-bold mb-3">Turnkey Construction. On-Time. Transparent.</h2>
+                  <p class="lead mb-4">Daily updates • CCTV • 7ft basements • QA</p>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Request Site Visit</a>
+                    <a href="/projects.html" class="btn btn-outline-primary btn-lg">View Projects</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="hero-content">
+                  <span class="badge">Commercial Construction</span>
+                  <h2 class="display-4 fw-bold mb-3">Clinics, Offices, Warehouses. Done Right.</h2>
+                  <p class="lead mb-4">Transparent BOQ • Quality brands • Timelines</p>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Get a Quote</a>
+                    <a href="/services/commercial-construction.html" class="btn btn-outline-primary btn-lg">Learn more</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="hero-content">
+                  <span class="badge">Engineering & Tests</span>
+                  <h2 class="display-4 fw-bold mb-3">Digital Survey. Compulsory Soil Testing.</h2>
+                  <p class="lead mb-4">No extra charge • Safer foundations</p>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Book Survey</a>
+                    <a href="/services/engineering-and-process.html" class="btn btn-outline-primary btn-lg">Our process</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="carousel-item">
+                <div class="hero-content">
+                  <span class="badge">Live Updates</span>
+                  <h2 class="display-4 fw-bold mb-3">WhatsApp Updates. CCTV Till Handover.</h2>
+                  <p class="lead mb-4">Full transparency • Quality data promise</p>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Start your project</a>
+                    <a href="/payments.html" class="btn btn-outline-primary btn-lg">Warranty & QA</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Indicators + Controls -->
+            <div class="hero-nav-wrapper d-flex align-items-center justify-content-between">
+              <div class="hero-indicators" role="tablist" aria-label="Select highlight">
+                <button type="button" data-bs-target="#heroCarouselContent" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarouselContent" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarouselContent" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarouselContent" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              </div>
+              <div class="hero-controls">
+                <button class="hero-control-prev" type="button" data-bs-target="#heroCarouselContent" data-bs-slide="prev" aria-label="Previous">
+                  <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="hero-control-next" type="button" data-bs-target="#heroCarouselContent" data-bs-slide="next" aria-label="Next">
+                  <i class="bi bi-chevron-right"></i>
+                </button>
+                <button id="heroPause" class="btn btn-sm btn-outline-secondary ms-2" type="button" aria-pressed="false" aria-label="Pause carousel">Pause</button>
+              </div>
+            </div>
+          </div>
+          <small class="text-muted mt-2">You can pause the slides anytime. Keyboard and screen reader friendly.</small>
+        </div>
+      </div>
+
+      <!-- Right: Images (FOLLOWER CAROUSEL) -->
+      <div class="col-lg-6 hero-image-col">
+        <div id="heroCarouselImages" class="carousel slide carousel-fade h-100" data-bs-ride="false" aria-hidden="true">
+          <div class="carousel-inner h-100">
+            <!-- Image 1 -->
+            <div class="carousel-item active h-100">
+              <div class="hero-image-wrapper">
+                <img
+                  src="/assets/p1.png"
+                  alt="Completed villa exterior"
+                  class="hero-image"
+                  width="1600" height="1200"
+                  fetchpriority="high"
+                  decoding="async"
+                  loading="eager"
+                  sizes="(min-width: 992px) 50vw, 100vw">
+              </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="carousel-item h-100">
+              <div class="hero-image-wrapper">
+                <img
+                  src="/assets/p2.png"
+                  alt="Modern commercial interior"
+                  class="hero-image"
+                  width="1600" height="1200"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="(min-width: 992px) 50vw, 100vw">
+              </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="carousel-item h-100">
+              <div class="hero-image-wrapper">
+                <img
+                  src="/assets/p3.png"
+                  alt="Precision engineering on site"
+                  class="hero-image"
+                  width="1600" height="1200"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="(min-width: 992px) 50vw, 100vw">
+              </div>
+            </div>
+            <!-- Image 4 -->
+            <div class="carousel-item h-100">
+              <div class="hero-image-wrapper">
+                <img
+                  src="/assets/p4.png"
+                  alt="Ongoing site progress"
+                  class="hero-image"
+                  width="1600" height="1200"
+                  decoding="async"
+                  loading="lazy"
+                  sizes="(min-width: 992px) 50vw, 100vw">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <div class="hero-slide">
-          <img src="/assets/p2.png" alt="Modern commercial interior" loading="lazy" decoding="async" width="1920" height="1080">
-          <div class="hero-overlay" aria-hidden="true"></div>
-          <div class="hero-content">
-            <div class="inner">
-              <span class="badge">Commercial Construction</span>
-              <h1>Clinics, Offices, Warehouses. Done Right.</h1>
-              <p class="lead">Transparent BOQ • Quality brands • Timelines</p>
-              <div class="d-flex gap-3 btn-group">
-                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Get a Quote</a>
-                <a href="/services/commercial-construction.html" class="btn btn-outline-light btn-lg">Learn more</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <div class="hero-slide">
-          <img src="/assets/p3.png" alt="Precision engineering on site" loading="lazy" decoding="async" width="1920" height="1080">
-          <div class="hero-overlay" aria-hidden="true"></div>
-          <div class="hero-content">
-            <div class="inner">
-              <span class="badge">Engineering & Tests</span>
-              <h1>Digital Survey. Compulsory Soil Testing.</h1>
-              <p class="lead">No extra charge • Safer foundations</p>
-              <div class="d-flex gap-3 btn-group">
-                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Book Survey</a>
-                <a href="/services/engineering-and-process.html" class="btn btn-outline-light btn-lg">Our process</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Slide 4 -->
-      <div class="carousel-item">
-        <div class="hero-slide">
-          <img src="/assets/p4.png" alt="Ongoing site progress" loading="lazy" decoding="async" width="1920" height="1080">
-          <div class="hero-overlay" aria-hidden="true"></div>
-          <div class="hero-content">
-            <div class="inner">
-              <span class="badge">Live Updates</span>
-              <h1>WhatsApp Updates. CCTV Till Handover.</h1>
-              <p class="lead">Full transparency • Quality data promise</p>
-              <div class="d-flex gap-3 btn-group">
-                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Start your project</a>
-                <a href="/payments.html" class="btn btn-outline-light btn-lg">Warranty & QA</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</header>
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+</section>
 
 <!-- Services trio -->
 <section class="section services-section reveal">
@@ -866,27 +1038,97 @@
   </div>
 </section>
 
-<!-- Compact Process Link -->
+<!-- Enhanced Process Section -->
 <section class="section reveal pt-0">
-  <div class="container text-center">
-    <div class="process-link-card position-relative overflow-hidden">
-      <div class="process-link-bg"></div>
-      <div class="process-link-content">
-        <div class="process-icon mb-3">
-          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+  <div class="container">
+    <div class="process-showcase-card position-relative overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="process-bg-pattern"></div>
+
+      <!-- Main Content -->
+      <div class="row align-items-center">
+        <!-- Left: Process Steps -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="process-steps">
+            <div class="process-step active">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h6>Planning & Design</h6>
+                <p>Site survey, architectural design & approvals</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h6>Foundation & Structure</h6>
+                <p>Excavation, foundation & structural work</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h6>Construction & Finishing</h6>
+                <p>Brickwork, electrical, plumbing & interiors</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h6>Quality Assurance</h6>
+                <p>Testing, inspections & final handover</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <h3 class="h4 fw-bold mb-2 text-white">Our 6-Step Construction Process</h3>
-        <p class="text-white-50 mb-3">From planning to handover, we make it simple</p>
-        <a href="/services/index.html" class="btn btn-light btn-lg fw-medium shadow-sm">
-          <span>Explore Process</span>
-          <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
-        </a>
+
+        <!-- Right: CTA Content -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <div class="process-content">
+            <div class="process-icon-wrapper mb-4">
+              <div class="process-icon">
+                <i class="bi bi-diagram-3-fill"></i>
+              </div>
+              <span class="badge badge-process">6-Step Process</span>
+            </div>
+
+            <h3 class="display-6 fw-bold mb-3">From Dream to Reality</h3>
+            <p class="lead text-muted mb-4">
+              Our proven 6-step construction process ensures quality, transparency, and timely delivery.
+              Every project follows our systematic approach for exceptional results.
+            </p>
+
+            <div class="process-stats mb-4">
+              <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">On-Time Delivery</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Site Monitoring</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+              <a href="services/index.html#how-it-works" class="btn btn-brand btn-lg shadow-soft">
+                <i class="bi bi-play-circle-fill me-2"></i>
+                Explore Our Process
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Decorative Elements -->
       <div class="process-decoration">
-        <div class="step-dot step-1"></div>
-        <div class="step-dot step-2"></div>
-        <div class="step-dot step-3"></div>
-        <div class="step-connector"></div>
+        <div class="decoration-line decoration-line-1"></div>
+        <div class="decoration-line decoration-line-2"></div>
+        <div class="decoration-dot decoration-dot-1"></div>
+        <div class="decoration-dot decoration-dot-2"></div>
+        <div class="decoration-dot decoration-dot-3"></div>
       </div>
     </div>
   </div>
@@ -991,64 +1233,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-light pt-5 pb-4 mt-5">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4">
-        <div class="d-flex align-items-center gap-2 mb-3">
-          <img src="/assets/logo.png" width="32" height="32" alt="ArunaDevi Builders Logo" decoding="async">
-          <strong class="fs-5">ArunaDevi Builders</strong>
-        </div>
-        <p class="text-secondary mb-0">Materials expertise since 1995 • Site supervision since 2015 • Incorporated 2023. Over 1,00,000 sqft handled.</p>
-      </div>
-      <div class="col-6 col-lg-2">
-        <h6>Company</h6>
-        <ul class="list-unstyled text-secondary">
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/projects.html">Projects</a></li>
-          <li><a href="/payments.html">Payments</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-lg-2">
-        <h6>Services</h6>
-        <ul class="list-unstyled text-secondary">
-          <li><a href="/services/turnkey-house-construction.html">Turnkey Houses</a></li>
-          <li><a href="/services/commercial-construction.html">Commercial</a></li>
-          <li><a href="/services/engineering-and-process.html">Engineering</a></li>
-          <li><a href="/services/materials-and-brands.html">Materials</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4">
-        <h6>Reach Us</h6>
-        <div class="small text-secondary">
-          <div class="mb-2"><i class="bi bi-geo-alt text-brand me-2" aria-hidden="true"></i>Chennai, Tamil Nadu</div>
-          <div class="mb-2"><i class="bi bi-telephone me-2 text-brand" aria-hidden="true"></i><a href="tel:+919000000000">+91-90000 00000</a></div>
-          <div class="mb-2"><i class="bi bi-whatsapp me-2 text-brand" aria-hidden="true"></i><a href="https://wa.me/919000000000">WhatsApp</a></div>
-          <div class="d-flex gap-3 mt-3">
-            <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn" class="text-light"><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr class="border-secondary my-4">
-    <div class="small text-secondary d-md-flex justify-content-between align-items-center">
-      <div>© <span id="year"></span> ArunaDevi Builders. All rights reserved.</div>
-      <div class="mt-2 mt-md-0">
-        <a href="/privacy.html" class="text-secondary me-3">Privacy Policy</a>
-        <a href="/terms.html" class="text-secondary">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<!-- Footer will be loaded by footer-loader.js -->
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/footer-loader.js" defer></script>
 <script>
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
 
   // Reveal on scroll
   (() => {
@@ -1090,6 +1280,44 @@
       navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
     }
   });
+
+  // Sync hero carousels (content and images)
+  (function () {
+    const contentEl = document.getElementById('heroCarouselContent');
+    const imagesEl  = document.getElementById('heroCarouselImages');
+
+    // Bootstrap instances
+    const content = bootstrap.Carousel.getOrCreateInstance(contentEl, { interval: 6000, ride: 'carousel', pause: 'hover', touch: true, wrap: true });
+    const images  = bootstrap.Carousel.getOrCreateInstance(imagesEl,  { ride: false, interval: false, touch: false, wrap: true });
+
+    // Keep image carousel in sync with content carousel
+    contentEl.addEventListener('slide.bs.carousel', function (ev) {
+      // ev.to is the next index; move images to the same index
+      images.to(ev.to);
+    });
+
+    // Pause/Play control
+    const pauseBtn = document.getElementById('heroPause');
+    let paused = false;
+    function setPausedState(p) {
+      paused = p;
+      pauseBtn.setAttribute('aria-pressed', String(p));
+      pauseBtn.textContent = p ? 'Play' : 'Pause';
+      if (p) content.pause(); else content.cycle();
+    }
+    pauseBtn.addEventListener('click', () => setPausedState(!paused));
+
+    // Respect reduced motion: start paused
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReduced.matches) setPausedState(true);
+    prefersReduced.addEventListener?.('change', e => setPausedState(e.matches));
+
+    // Optional: stop when not visible (Bootstrap already helps via Page Visibility)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) content.pause();
+      else if (!paused) content.cycle();
+    });
+  })();
 </script>
 </body>
 </html>

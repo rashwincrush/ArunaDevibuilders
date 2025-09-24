@@ -9,6 +9,132 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="/assets/styles.css" rel="stylesheet">
+  <style>
+    /* Additional styles for the payments page */
+    .payment-option-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .payment-option-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .payment-stage {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .payment-stage::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      background-color: var(--bs-primary);
+    }
+    
+    .payment-stage.optional::before {
+      background-color: var(--bs-secondary);
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2rem;
+    }
+    
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 0.6rem;
+      top: 2rem;
+      bottom: 0;
+      width: 2px;
+      background-color: #e9ecef;
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    
+    .timeline-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background-color: var(--bs-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      margin-right: 1rem;
+      z-index: 1;
+      position: relative;
+    }
+    
+    .feature-list li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .feature-list li::before {
+      content: "✓";
+      color: var(--bs-success);
+      font-weight: bold;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+    
+    .section-header {
+      position: relative;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .section-header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--bs-primary);
+    }
+    
+    .nav-tabs .nav-link {
+      border: none;
+      color: var(--bs-secondary);
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: var(--bs-primary);
+      border-bottom: 3px solid var(--bs-primary);
+      background: transparent;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      background-color: rgba(var(--bs-primary-rgb), 0.05);
+      color: var(--bs-primary);
+      box-shadow: none;
+    }
+    
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: rgba(var(--bs-primary-rgb), 0.25);
+    }
+    
+    .included-features {
+      background: linear-gradient(135deg, rgba(var(--bs-primary-rgb), 0.03) 0%, rgba(var(--bs-secondary-rgb), 0.03) 100%);
+      border-left: 4px solid var(--bs-primary);
+    }
+  </style>
 </head>
 <body>
 
@@ -39,75 +165,178 @@
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="/payments.html">Payments</a></li>
-        
+        <li class="nav-item"><a class="nav-link active" href="/payments.html">Payments</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<section class="section reveal">
+<section class="section py-5 bg-light">
   <div class="container">
-    <h1 class="fw-bold mb-3">Payments</h1>
-    <p class="text-secondary">Our payments are tied to project milestones for clarity and fairness.</p>
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="display-5 fw-bold mb-3">Transparent Payment Plans</h1>
+        <p class="lead text-secondary">Our milestone-based payment system ensures clarity, fairness, and financial security throughout your construction journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Payment Policy Options -->
-    <div class="mt-4">
-      <h5 class="mb-3">Payment Policy Options</h5>
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="p-4 border rounded-4 h-100">
-            <h6 class="fw-semibold mb-2">Option A — Zero-Advance for >2,000 sq ft</h6>
-            <ol class="text-secondary small mb-0">
-              <li>0% signing</li>
-              <li>10% mobilization/survey/soil</li>
-              <li>15% foundation & plinth/basement</li>
-              <li>15% ground slab</li>
-              <li>15% first-floor/roof slab</li>
-              <li>10% brickwork & internal plaster</li>
-              <li>7% MEP rough-ins & wet-area waterproofing</li>
-              <li>8% flooring & exterior plaster</li>
-              <li>10% carpentry/base coats/ceilings</li>
-              <li>10% finishes/fixtures/T&C/snag-closure</li>
-            </ol>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="p-4 border rounded-4 h-100">
-            <h6 class="fw-semibold mb-2">Option B — 10% Advance (all other cases; min 10% for <2,000 sq ft)</h6>
-            <ol class="text-secondary small mb-0">
-              <li>10% signing</li>
-              <li>10% mobilization/survey/soil (20%)</li>
-              <li>15% foundation/plinth/basement (35%)</li>
-              <li>15% ground slab (50%)</li>
-              <li>15% first-floor/roof slab (65%)</li>
-              <li>10% brickwork/plaster (75%)</li>
-              <li>7% MEP & waterproofing (82%)</li>
-              <li>8% flooring/exterior (90%)</li>
-              <li>5% carpentry/base coats/ceilings (95%)</li>
-              <li>5% finishes/fixtures/T&C/snag & handover (100%)</li>
-            </ol>
+<section class="section py-5">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="h3 fw-bold">Choose Your Payment Plan</h2>
+      <p class="text-muted mb-0">Select the option that best fits your project requirements</p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="payment-option-card card h-100 border-0 rounded-4">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold mb-0">Zero Advance Plan</h5>
+              <span class="badge bg-success bg-opacity-10 text-success">Popular</span>
+            </div>
+            <p class="text-muted small mb-4">Ideal for projects over 2,000 sq ft with no upfront payment required.</p>
+            
+            <div class="mb-4">
+              <h6 class="fw-semibold mb-3">Payment Breakdown</h6>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">0%</span>
+                <span class="fw-medium">Signing</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Mobilization, Survey & Soil Testing</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">Foundation & Plinth/Basement</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">Ground Slab</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">First Floor/Roof Slab</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Brickwork & Internal Plaster</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">7%</span>
+                <span class="fw-medium">MEP Rough-ins & Waterproofing</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">8%</span>
+                <span class="fw-medium">Flooring & Exterior Plaster</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Carpentry, Base Coats & Ceilings</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Finishes, Fixtures & Handover</span>
+              </div>
+            </div>
+            
+            <div class="mt-auto">
+            </div>
           </div>
         </div>
       </div>
-      <div class="small text-secondary mt-2">Note: Percentages may fine-tune by floors/scope; final breakup in BOQ/contract.</div>
+      
+      <div class="col-lg-6">
+        <div class="payment-option-card card h-100 border-0 rounded-4">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h5 class="card-title fw-bold mb-0">Standard Plan</h5>
+              <span class="badge bg-secondary bg-opacity-10 text-secondary">Recommended</span>
+            </div>
+            <p class="text-muted small mb-4">For projects under 2,000 sq ft with a 10% advance payment.</p>
+            
+            <div class="mb-4">
+              <h6 class="fw-semibold mb-3">Payment Breakdown</h6>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Signing (Total: 10%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Mobilization, Survey & Soil Testing (Total: 20%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">Foundation & Plinth/Basement (Total: 35%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">Ground Slab (Total: 50%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">15%</span>
+                <span class="fw-medium">First Floor/Roof Slab (Total: 65%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">10%</span>
+                <span class="fw-medium">Brickwork & Plaster (Total: 75%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">7%</span>
+                <span class="fw-medium">MEP & Waterproofing (Total: 82%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">8%</span>
+                <span class="fw-medium">Flooring & Exterior (Total: 90%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">5%</span>
+                <span class="fw-medium">Carpentry, Base Coats & Ceilings (Total: 95%)</span>
+              </div>
+              <div class="payment-stage mb-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary mb-1">5%</span>
+                <span class="fw-medium">Finishes, Fixtures & Handover (Total: 100%)</span>
+              </div>
+            </div>
+            
+            <div class="mt-auto">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    <div class="mt-4 text-center">
+      <p class="text-muted small">Note: Percentages may be fine-tuned based on floors/scope; final breakdown will be detailed in BOQ/contract.</p>
+    </div>
+  </div>
+</section>
 
-    <ul class="nav nav-tabs mt-3" id="paymentsTabs" role="tablist">
+<section class="section py-5 bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="h3 fw-bold">Payment & Project Details</h2>
+      <p class="text-muted mb-0">Understand how payments align with construction milestones</p>
+    </div>
+    
+    <ul class="nav nav-tabs justify-content-center mb-4" id="paymentsTabs" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="tab-payments" data-bs-toggle="tab" data-bs-target="#pane-payments" type="button" role="tab" aria-controls="pane-payments" aria-selected="true">
-          Payments
+          <i class="bi bi-credit-card me-2"></i>Payment Stages
         </button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tab-warranty" data-bs-toggle="tab" data-bs-target="#pane-warranty" type="button" role="tab" aria-controls="pane-warranty" aria-selected="false">
-          Warranty
+          <i class="bi bi-shield-check me-2"></i>Warranty
         </button>
       </li>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="tab-quality" data-bs-toggle="tab" data-bs-target="#pane-quality" type="button" role="tab" aria-controls="pane-quality" aria-selected="false">
-          Quality
+          <i class="bi bi-award me-2"></i>Quality Assurance
         </button>
       </li>
     </ul>
@@ -116,131 +345,126 @@
       <div class="tab-pane fade show active" id="pane-payments" role="tabpanel" aria-labelledby="tab-payments" tabindex="0">
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
-            <div class="p-4 border rounded-4 h-100">
-              <span class="badge bg-dark-subtle text-dark-emphasis mb-2">10% Advance</span>
-              <h6>Kickoff & Design</h6>
-              <p class="text-secondary small mb-0">Survey, soil test, drawings, approvals.</p>
+            <div class="card border-0 h-100 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                  <i class="bi bi-pencil-square text-primary fs-4"></i>
+                </div>
+                <span class="badge bg-primary mb-2">10% Advance</span>
+                <h6 class="fw-bold">Kickoff & Design</h6>
+                <p class="text-secondary small mb-0">Survey, soil test, architectural drawings, and approvals.</p>
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="p-4 border rounded-4 h-100">
-              <span class="badge bg-dark-subtle text-dark-emphasis mb-2">Stage 2</span>
-              <h6>Foundation</h6>
-              <p class="text-secondary small mb-0">7 ft basement, anti-water-log measures.</p>
+            <div class="card border-0 h-100 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                  <i class="bi bi-building text-primary fs-4"></i>
+                </div>
+                <span class="badge bg-primary mb-2">Stage 2</span>
+                <h6 class="fw-bold">Foundation</h6>
+                <p class="text-secondary small mb-0">7 ft basement, anti-water-log measures, and structural foundation.</p>
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="p-4 border rounded-4 h-100">
-              <span class="badge bg-dark-subtle text-dark-emphasis mb-2">Stage 3</span>
-              <h6>Structure & MEP</h6>
-              <p class="text-secondary small mb-0">Framing, plumbing, electrical, plastering.</p>
+            <div class="card border-0 h-100 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                  <i class="bi bi-lightning-charge text-primary fs-4"></i>
+                </div>
+                <span class="badge bg-primary mb-2">Stage 3</span>
+                <h6 class="fw-bold">Structure & MEP</h6>
+                <p class="text-secondary small mb-0">Framing, plumbing, electrical, plastering, and internal works.</p>
+              </div>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="p-4 border rounded-4 h-100">
-              <span class="badge bg-dark-subtle text-dark-emphasis mb-2">Handover</span>
-              <h6>Finishes & QA</h6>
-              <p class="text-secondary small mb-0">Snag list, warranty docs, final clean.</p>
+            <div class="card border-0 h-100 shadow-sm">
+              <div class="card-body text-center p-4">
+                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                  <i class="bi bi-house-check text-primary fs-4"></i>
+                </div>
+                <span class="badge bg-primary mb-2">Handover</span>
+                <h6 class="fw-bold">Finishes & QA</h6>
+                <p class="text-secondary small mb-0">Snag list resolution, warranty documentation, and final cleaning.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="tab-pane fade" id="pane-warranty" role="tabpanel" aria-labelledby="tab-warranty" tabindex="0">
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <h5 class="mb-2">Warranty Coverage</h5>
-            <ul class="text-secondary mb-0">
-              <li><strong>Structure:</strong> 20-year warranty.</li>
-              <li><strong>Other services:</strong> Service periods vary by package and brand warranties provided at handover.</li>
-            </ul>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                      <i class="bi bi-shield-check text-success fs-1"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h4 class="fw-bold mb-3">Warranty Coverage</h4>
+                    <ul class="list-unstyled">
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Structure:</strong> 20-year comprehensive warranty
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Other services:</strong> Service periods vary by package with brand warranties provided at handover
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Documentation:</strong> Complete warranty package provided upon project completion
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="tab-pane fade" id="pane-quality" role="tabpanel" aria-labelledby="tab-quality" tabindex="0">
-        <div class="row g-4">
-          <div class="col-lg-8">
-            <h5 class="mb-2">Quality Assurance</h5>
-            <ul class="text-secondary mb-0">
-              <li>100% quality data promise with daily QA checklists.</li>
-              <li>Digital land survey and compulsory soil testing (no extra charge).</li>
-              <li>Concrete mix design, documentation, and CCTV till completion.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- What's included band -->
-    <div class="mt-5 p-4 rounded-4 bg-brand-50">
-      <h5 class="mb-3">What's included in every package</h5>
-      <ul class="text-secondary mb-0">
-        <li>Daily WhatsApp work updates</li>
-        <li>CCTV till site completion</li>
-        <li>100% quality check — “Daily quality data” promise</li>
-        <li>Digital land survey</li>
-        <li>Compulsory soil testing (no additional charges)</li>
-      </ul>
-    </div>
-
-    <!-- Warranty & Service -->
-    <div class="mt-5">
-      <h5>Warranty & Service</h5>
-      <p class="text-secondary mb-0"><strong>Structure warranty: 20 years</strong> (service periods vary by package).</p>
-    </div>
-
-    <!-- Timeline -->
-    <div class="mt-5">
-      <h5 class="mb-3">Project Timeline</h5>
-      <ol class="list-group list-group-numbered">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-semibold">10% Advance — Kickoff & Design</div>
-            <small class="text-secondary">Survey, compulsory soil test (no extra charge), drawings, approvals</small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-semibold">Stage 2 — Foundation</div>
-            <small class="text-secondary">7 ft basement, anti-water-log measures, mix design confirmation</small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-semibold">Stage 3 — Structure & MEP</div>
-            <small class="text-secondary">Framing, plumbing, electrical, plastering; daily WhatsApp updates & QA; CCTV active</small>
-          </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-semibold">Handover — Finishes & QA</div>
-            <small class="text-secondary">Snag list, documentation pack, final clean</small>
-          </div>
-        </li>
-      </ol>
-    </div>
-
-    <!-- FAQ -->
-    <div class="mt-5">
-      <h5 class="mb-3">FAQ</h5>
-      <div class="accordion" id="faq">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="q1"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="false" aria-controls="a1">Do you provide soil testing?</button></h2>
-          <div id="a1" class="accordion-collapse collapse" aria-labelledby="q1" data-bs-parent="#faq">
-            <div class="accordion-body text-secondary">Yes, compulsory and included without extra charges.</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="q2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">How are payments scheduled?</button></h2>
-          <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faq">
-            <div class="accordion-body text-secondary">10% advance, then milestone stages (foundation, structure/MEP, finishing/handover).</div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">Do you share daily updates?</button></h2>
-          <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faq">
-            <div class="accordion-body text-secondary">Yes, daily WhatsApp updates; CCTV remains active till completion.</div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body p-4">
+                <div class="row align-items-center">
+                  <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                      <i class="bi bi-award text-primary fs-1"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <h4 class="fw-bold mb-3">Quality Assurance</h4>
+                    <ul class="list-unstyled">
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        100% quality data promise with daily QA checklists
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        Digital land survey and compulsory soil testing (no extra charge)
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        Concrete mix design, documentation, and CCTV monitoring till completion
+                      </li>
+                      <li class="mb-2">
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        Regular third-party quality audits and material testing
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -248,55 +472,204 @@
   </div>
 </section>
 
-<footer class="bg-dark text-light pt-5 pb-4 mt-5">
+<section class="section py-5">
   <div class="container">
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4">
-        <div class="d-flex align-items-center gap-2 mb-2">
-          <img src="/assets/logo.png" width="28" height="28" alt="">
-          <strong>ArunaDevi Builders</strong>
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="section-header">
+          <h2 class="h3 fw-bold">What's Included in Every Package</h2>
+          <p class="text-muted mb-0">Our commitment to transparency and quality</p>
         </div>
-        <p class="text-secondary mb-0">Materials expertise since 1995 • Site supervision since 2015 • Incorporated 2023. Over 1,00,000 sqft handled.</p>
-      </div>
-      <div class="col-6 col-lg-2">
-        <h6 class="mb-3">Company</h6>
-        <ul class="list-unstyled text-secondary">
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/projects.html">Projects</a></li>
-          <li><a href="/payments.html">Payments</a></li>
-          
-        </ul>
-      </div>
-      <div class="col-6 col-lg-2">
-        <h6 class="mb-3">Services</h6>
-        <ul class="list-unstyled text-secondary">
-          <li><a href="/services/turnkey-house-construction.html">Turnkey Houses</a></li>
-          <li><a href="/services/commercial-construction.html">Commercial</a></li>
-          <li><a href="/services/engineering-and-process.html">Engineering</a></li>
-          <li><a href="/services/materials-and-brands.html">Materials</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4">
-        <h6 class="mb-3">Reach Us</h6>
-        <div class="small text-secondary">
-          <div><i class="bi bi-geo-alt text-brand me-2"></i>Chennai, Tamil Nadu</div>
-          <div><i class="bi bi-telephone me-2 text-brand"></i><a href="tel:+919000000000">+91-90000 00000</a></div>
-          <div><i class="bi bi-whatsapp me-2 text-brand"></i><a href="https://wa.me/919000000000">WhatsApp</a></div>
+        
+        <div class="included-features p-4 rounded-3 mb-4">
+          <ul class="feature-list list-unstyled mb-0">
+            <li>Daily WhatsApp work updates with photos and progress reports</li>
+            <li>CCTV surveillance accessible to you until project completion</li>
+            <li>100% quality check — our "Daily quality data" promise</li>
+            <li>Digital land survey with precise measurements</li>
+            <li>Compulsory soil testing at no additional charges</li>
+            <li>Professional project management with dedicated point of contact</li>
+            <li>Transparent documentation of all materials and processes</li>
+          </ul>
         </div>
       </div>
-    </div>
-    <hr class="border-secondary my-4">
-    <div class="small text-secondary d-flex justify-content-between">
-      <div>© <span id="year"></span> ArunaDevi Builders. All rights reserved.</div>
-      <div class="d-flex gap-3">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
+      <div class="col-lg-4 text-center">
+        <div class="bg-light rounded-3 p-4">
+          <i class="bi bi-chat-dots text-primary display-4 mb-3"></i>
+          <h5 class="fw-bold">Have Questions?</h5>
+          <p class="text-muted small mb-3">Our team is ready to clarify any aspect of our payment plans.</p>
+          <a href="/contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
       </div>
     </div>
   </div>
-</footer>
+</section>
+
+<section class="section py-5 bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="h3 fw-bold">Project Timeline</h2>
+      <p class="text-muted mb-0">See how payments align with construction progress</p>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="timeline-item d-flex">
+          <div class="timeline-icon flex-shrink-0">
+            <span>1</span>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h5 class="card-title mb-0 fw-bold">Kickoff & Design</h5>
+                  <span class="badge bg-primary">10% Advance</span>
+                </div>
+                <p class="text-muted mb-0">Comprehensive survey, compulsory soil testing (no extra charge), architectural drawings, and regulatory approvals.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item d-flex">
+          <div class="timeline-icon flex-shrink-0">
+            <span>2</span>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h5 class="card-title mb-0 fw-bold">Foundation</h5>
+                  <span class="badge bg-primary">Stage 2 Payment</span>
+                </div>
+                <p class="text-muted mb-0">7 ft basement construction, anti-water-log measures, concrete mix design confirmation, and structural foundation work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item d-flex">
+          <div class="timeline-icon flex-shrink-0">
+            <span>3</span>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h5 class="card-title mb-0 fw-bold">Structure & MEP</h5>
+                  <span class="badge bg-primary">Stage 3 Payment</span>
+                </div>
+                <p class="text-muted mb-0">Structural framing, plumbing, electrical systems, plastering; daily WhatsApp updates & QA checks; CCTV monitoring active throughout.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="timeline-item d-flex">
+          <div class="timeline-icon flex-shrink-0">
+            <span>4</span>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h5 class="card-title mb-0 fw-bold">Finishes & Handover</h5>
+                  <span class="badge bg-primary">Final Payment</span>
+                </div>
+                <p class="text-muted mb-0">Comprehensive snag list resolution, complete documentation package, final cleaning, and formal handover ceremony.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section py-5">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="h3 fw-bold">Frequently Asked Questions</h2>
+      <p class="text-muted mb-0">Common queries about our payment process</p>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion" id="faq">
+          <div class="accordion-item border-0 mb-3 shadow-sm">
+            <h2 class="accordion-header" id="q1">
+              <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#a1" aria-expanded="false" aria-controls="a1">
+                Do you provide soil testing as part of the service?
+              </button>
+            </h2>
+            <div id="a1" class="accordion-collapse collapse" aria-labelledby="q1" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Yes, soil testing is compulsory and included in our package without any extra charges. This ensures the foundation design is appropriate for your specific site conditions.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 shadow-sm">
+            <h2 class="accordion-header" id="q2">
+              <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#a2" aria-expanded="false" aria-controls="a2">
+                How are payments scheduled throughout the project?
+              </button>
+            </h2>
+            <div id="a2" class="accordion-collapse collapse" aria-labelledby="q2" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Payments are tied to specific construction milestones. We offer two plans: a Zero Advance plan for larger projects (over 2,000 sq ft) and a Standard plan with 10% advance for smaller projects. Each plan breaks down payments across foundation, structure/MEP, and finishing/handover stages.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 shadow-sm">
+            <h2 class="accordion-header" id="q3">
+              <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">
+                Do you share regular updates during construction?
+              </button>
+            </h2>
+            <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faq">
+              <div class="accordion-body">
+                Absolutely. We provide daily WhatsApp updates with photos and progress reports. Additionally, CCTV remains active throughout the construction phase, giving you remote access to monitor the site until project completion.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 shadow-sm">
+            <h2 class="accordion-header" id="q4">
+              <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#a4" aria-expanded="false" aria-controls="a4">
+                What warranty do you provide on your construction?
+              </button>
+            </h2>
+            <div id="a4" class="accordion-collapse collapse" aria-labelledby="q4" data-bs-parent="#faq">
+              <div class="accordion-body">
+                We offer a comprehensive 20-year warranty on the structure. Service periods for other components vary by package, and we provide all brand warranties for fixtures and finishes at handover.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 shadow-sm">
+            <h2 class="accordion-header" id="q5">
+              <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#a5" aria-expanded="false" aria-controls="a5">
+                Can the payment plan be customized for my specific needs?
+              </button>
+            </h2>
+            <div id="a5" class="accordion-collapse collapse" aria-labelledby="q5" data-bs-parent="#faq">
+              <div class="accordion-body">
+                While our standard plans work for most projects, we understand that each construction is unique. We're happy to discuss customization options based on your specific requirements during the consultation phase.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/main.js" defer></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+<div id="footer-placeholder"></div>
+<script src="/assets/footer-loader.js" defer></script>
 </body>
 </html>

@@ -166,14 +166,85 @@
 /* BEGIN: ADB Additions — Vendor rail behavior overrides */
 /* Show vendor logos in full color by default, and keep a subtle hover lift only */
 .vendor-logo { filter: none !important; }
-.vendor-item:hover .vendor-logo { filter: none !important; transform: translateY(-2px); }
-
 /* Add a gentle auto-drift similar to the ticker (left then right) */
 .vendor-rail .vendor-rail-inner { animation: vendor-rail-drift 40s linear infinite alternate; }
 @keyframes vendor-rail-drift { from { transform: translateX(0); } to { transform: translateX(-25%); } }
 
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .vendor-rail .vendor-rail-inner { animation: none; }
-}
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .vendor-rail .vendor-rail-inner { animation: none; }
+  }
 /* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Services hero image sizing */
+.service-hero-img {
+  width: 100%;
+  height: auto;            /* preserve aspect ratio */
+  max-height: 520px;       /* keep compact on desktop */
+  object-fit: contain;     /* ensure full image fits without crop */
+  object-position: center; /* center the artwork */
+  image-rendering: auto;   /* default high quality scaling */
+}
+@media (max-width: 991.98px) {
+  .service-hero-img { max-height: 360px; }
+}
+@media (max-width: 575.98px) {
+  .service-hero-img { max-height: 280px; }
+}
+/* END: ADB Additions — Services hero image sizing */
+
+/* BEGIN: ADB Additions — Comparison section */
+.compare-grid { --gap: 1.25rem; }
+.compare-card {
+  background: #fff;
+  border: 1px solid rgba(2,6,23,.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.compare-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0,0,0,.08); }
+.compare-head { display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-bottom:.5rem; }
+.compare-title { margin:0; font-weight:700; color:#0f172a; }
+.tag { display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .6rem; border-radius:999px; font-weight:600; font-size:.8rem; border:1px solid transparent; }
+.tag.good { color:#065f46; background:#ecfdf5; border-color:#a7f3d0; }
+.tag.bad { color:#991b1b; background:#fef2f2; border-color:#fecaca; }
+.feature-list { list-style:none; padding-left:0; margin:0; display:grid; gap:.6rem; }
+.feature-item { display:flex; align-items:flex-start; gap:.6rem; color:#475569; }
+.fi-icon { width:28px; height:28px; border-radius:999px; display:grid; place-items:center; flex-shrink:0; }
+.fi-icon.good { background:#ecfdf5; color:#059669; }
+.fi-icon.bad { background:#fef2f2; color:#dc2626; }
+.compare-note { color:#64748b; font-size:.9rem; }
+@media (min-width: 992px){
+  .compare-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: var(--gap); }
+}
+/* END: ADB Additions — Comparison section */
+
+/* BEGIN: Global footer styles */
+footer {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+footer h6 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+footer a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+footer .bi { 
+  font-size: 1.2rem; 
+}
+/* END: Global footer styles */
