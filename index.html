@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home — ArunaDevi Builders</title>
+  <meta name="description" content="Turnkey house & commercial construction in Chennai with quality assurance and transparent stages.">
+  <link rel="icon" href="/assets/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="/assets/styles.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #1e40af;           /* deep blue */
+      --brand-600: #1d4ed8;       /* hover blue */
+      --brand-50: #eef2ff;        /* soft tint */
+      --brand-light: #3b82f6;     /* lighter blue for accents */
+      --ink: #0f172a;
+      --muted: #64748b;
+      --card: #ffffff;
+      --ring: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --section-padding: 80px 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+    }
+    
+    .text-brand { color: var(--brand) !important; }
+    .btn-brand { 
+      background: var(--brand); 
+      color: #fff; 
+      border: 0;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-brand:hover { 
+      background: var(--brand-600); 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+    }
+    .bg-brand-50 { background: var(--brand-50); }
+    .shadow-soft { box-shadow: var(--ring); }
+    .section { padding: var(--section-padding); }
+    
+    /* Improved Navbar */
+    .navbar {
+      padding: 16px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+    
+    .navbar .nav-link {
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    
+    .navbar .nav-link:hover {
+      background: var(--brand-50);
+      color: var(--brand);
+    }
+    
+    .navbar .dropdown-menu {
+      border-radius: 12px;
+      border: none;
+      box-shadow: var(--ring);
+      padding: 8px;
+    }
+    
+    .dropdown-item {
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 2px 0;
+    }
+    
+    .dropdown-item:hover {
+      background: var(--brand-50);
+      color: var(--brand);
+    }
+    
+    /* Enhanced Hero Section */
+    .hero-carousel {
+      position: relative;
+      overflow: hidden;
+      margin-top: 0;
+    }
+    
+    .hero-carousel .carousel,
+    .hero-carousel .carousel-inner,
+    .hero-carousel .carousel-item {
+      height: min(85vh, 800px);
+    }
+    
+    @media (max-width: 768px) { 
+      .hero-carousel .carousel-item { 
+        height: 75vh; 
+      } 
+    }
+    
+    .hero-slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.9);
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.4) 100%);
+    }
+    
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      color: #fff;
+    }
+    
+    .hero-content .inner {
+      max-width: 980px;
+      padding-left: 40px;
+    }
+    
+    .hero-content .badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 50px;
+    }
+    
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 20px 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-content .lead {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content .inner {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content .lead {
+        font-size: 1.1rem;
+      }
+    }
+    
+    .btn-outline-light {
+      --bs-btn-color: #fff;
+      --bs-btn-border-color: #fff;
+      --bs-btn-hover-bg: #fff;
+      --bs-btn-hover-color: var(--brand);
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-light:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    .carousel-indicators button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin: 0 6px;
+      border: 2px solid transparent;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-indicators button.active {
+      background: #fff;
+      width: 30px;
+      border-radius: 10px;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 20px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .hero-carousel:hover .carousel-control-prev,
+    .hero-carousel:hover .carousel-control-next {
+      opacity: 1;
+    }
+    
+    /* Improved Services Section */
+    .services-section .feature {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand-50);
+      color: var(--brand);
+      margin-bottom: 24px;
+      font-size: 1.8rem;
+    }
+    
+    .services-section .card {
+      border: none;
+      border-radius: 16px;
+      padding: 32px 24px;
+      height: 100%;
+      transition: all 0.3s ease;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .services-section .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--ring);
+    }
+    
+    .services-section h5 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    
+    /* Enhanced USP Cards */
+    .usp-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 12px;
+      padding: 24px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+    
+    .usp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--ring);
+    }
+    
+    .usp-card i {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand-50);
+      color: var(--brand);
+      margin-right: 12px;
+    }
+    
+    /* Testimonials */
+    .tquote {
+      background: #fff;
+      border: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .tquote:before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--brand-50);
+      font-family: Georgia, serif;
+      line-height: 1;
+      z-index: 0;
+    }
+
+    .tquote .bi-chat-quote {
+      color: var(--brand);
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .tquote p {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+      color: white;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .cta-section:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
+    }
+    
+    .cta-section .btn {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      border-radius: 8px;
+      padding: 12px 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-section .btn:hover {
+      background: white;
+      color: var(--brand);
+      transform: translateY(-2px);
+    }
+    
+    /* Vendor Marquee Improvements */
+    .vendor-marquee {
+      background: var(--brand-50);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    
+    .vendor-marquee .vwrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .vendor-marquee .vtrack {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+      padding: 24px 0;
+      margin: 0;
+      animation: scrollx 30s linear infinite;
+    }
+    
+    .vendor-marquee .vitem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-width: 200px;
+    }
+    
+    .vendor-marquee .vitem img {
+      display: block;
+      width: 160px;
+      height: 60px;
+      object-fit: contain;
+      transition: all 0.3s ease;
+    }
+    
+    .vendor-marquee .vitem:hover img {
+      filter: none;
+      transform: scale(1.05);
+    }
+    
+    .vendor-marquee .vname {
+      font-size: 0.85rem;
+      color: #475569;
+      font-weight: 500;
+    }
+    
+    @keyframes scrollx {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Featured Projects */
+    .featured-project .card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+    
+    .featured-project .card img {
+      border-radius: 12px;
+      transition: all 0.5s ease;
+    }
+    
+    .featured-project .card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .featured-project .card-body {
+      padding: 20px 0 0 0;
+    }
+    
+    /* Footer Improvements */
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    
+    footer h6 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    
+    footer a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+    
+    footer .bi {
+      font-size: 1.2rem;
+    }
+    
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 0;
+      }
+      
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-content .lead {
+        font-size: 1.1rem;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .btn-group .btn {
+        width: 100%;
+      }
+    }
+
+    /* Process Link Card */
+    .process-link-card {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3);
+      margin: 2rem 0;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .process-link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(30, 64, 175, 0.4);
+    }
+
+    .process-link-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,50 L0,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+      background-size: cover;
+      opacity: 0.5;
+    }
+
+    .process-link-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .process-icon {
+      font-size: 3rem;
+      color: rgba(255, 255, 255, 0.8);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .process-link-content .btn {
+      background: rgba(255, 255, 255, 0.95);
+      border: none;
+      color: var(--brand);
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .process-link-content .btn:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .process-decoration {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .step-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .step-1 { top: 30px; left: 30px; animation-delay: 0s; }
+    .step-2 { top: 30px; right: 30px; animation-delay: 0.5s; }
+    .step-3 { bottom: 30px; left: 50%; transform: translateX(-50%); animation-delay: 1s; }
+
+    .step-connector {
+      position: absolute;
+      top: 34px;
+      left: 38px;
+      right: 38px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+      <img src="/assets/logo.png" width="36" height="36" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/services/index.html">All Services</a></li>
+            <li><a class="dropdown-item" href="/services/turnkey-house-construction.html">Turnkey House Construction</a></li>
+            <li><a class="dropdown-item" href="/services/commercial-construction.html">Commercial Construction</a></li>
+            <li><a class="dropdown-item" href="/services/engineering-and-process.html">Engineering & Process</a></li>
+            <li><a class="dropdown-item" href="/services/materials-and-brands.html">Materials & Brands</a></li>
+            <li><a class="dropdown-item" href="/services/concrete-methods.html">Concrete Methods</a></li>
+            <li><a class="dropdown-item" href="/services/architectural-design.html">Architectural Design</a></li>
+            <li><a class="dropdown-item" href="/services/structural-designing.html">Structural Designing</a></li>
+            <li><a class="dropdown-item" href="/services/building-plan-approval.html">Building Plan Approval</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="/payments.html">Payments</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero-carousel">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="hero-slide">
+          <img src="/assets/p1.png" alt="Completed villa exterior" fetchpriority="high" decoding="async">
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="hero-content">
+            <div class="inner">
+              <span class="badge">20 Years of Materials Expertise</span>
+              <h1>Turnkey Construction. On-Time. Transparent.</h1>
+              <p class="lead">Daily updates • CCTV • 7ft basements • QA</p>
+              <div class="d-flex gap-3 btn-group">
+                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Request Site Visit</a>
+                <a href="/projects.html" class="btn btn-outline-light btn-lg">View Projects</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="hero-slide">
+          <img src="/assets/p2.png" alt="Modern commercial interior" loading="lazy" decoding="async" width="1920" height="1080">
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="hero-content">
+            <div class="inner">
+              <span class="badge">Commercial Construction</span>
+              <h1>Clinics, Offices, Warehouses. Done Right.</h1>
+              <p class="lead">Transparent BOQ • Quality brands • Timelines</p>
+              <div class="d-flex gap-3 btn-group">
+                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Get a Quote</a>
+                <a href="/services/commercial-construction.html" class="btn btn-outline-light btn-lg">Learn more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="hero-slide">
+          <img src="/assets/p3.png" alt="Precision engineering on site" loading="lazy" decoding="async" width="1920" height="1080">
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="hero-content">
+            <div class="inner">
+              <span class="badge">Engineering & Tests</span>
+              <h1>Digital Survey. Compulsory Soil Testing.</h1>
+              <p class="lead">No extra charge • Safer foundations</p>
+              <div class="d-flex gap-3 btn-group">
+                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Book Survey</a>
+                <a href="/services/engineering-and-process.html" class="btn btn-outline-light btn-lg">Our process</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <div class="hero-slide">
+          <img src="/assets/p4.png" alt="Ongoing site progress" loading="lazy" decoding="async" width="1920" height="1080">
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="hero-content">
+            <div class="inner">
+              <span class="badge">Live Updates</span>
+              <h1>WhatsApp Updates. CCTV Till Handover.</h1>
+              <p class="lead">Full transparency • Quality data promise</p>
+              <div class="d-flex gap-3 btn-group">
+                <a href="/contact.html" class="btn btn-brand btn-lg shadow-soft">Start your project</a>
+                <a href="/payments.html" class="btn btn-outline-light btn-lg">Warranty & QA</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Previous slide">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Next slide">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</header>
+
+<!-- Services trio -->
+<section class="section services-section reveal">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">Our Construction Services</h2>
+        <p class="lead text-muted">Comprehensive construction solutions with transparency and quality assurance</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="feature"><i class="bi bi-house-gear" aria-hidden="true"></i></div>
+          <h5>Turnkey House Construction</h5>
+          <p class="text-secondary">Design to handover, fully managed with stage-wise payments.</p>
+          <a class="btn btn-link p-0 text-brand fw-medium" href="/services/turnkey-house-construction.html">Learn more →</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="feature"><i class="bi bi-buildings" aria-hidden="true"></i></div>
+          <h5>Commercial Construction</h5>
+          <p class="text-secondary">Clinics, offices, warehouses with transparent BOQ.</p>
+          <a class="btn btn-link p-0 text-brand fw-medium" href="/services/commercial-construction.html">Learn more →</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <div class="feature"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i></div>
+          <h5>Engineering & Tests</h5>
+          <p class="text-secondary">Digital land survey & compulsory soil testing (no extra charge).</p>
+          <a class="btn btn-link p-0 text-brand fw-medium" href="/services/engineering-and-process.html">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why choose us / USPs -->
+<section class="section reveal pt-0">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">Why Choose ArunaDevi Builders</h2>
+        <p class="lead text-muted">We deliver quality construction with complete transparency</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-box" aria-hidden="true"></i>
+            <strong>Measuring-box concrete</strong>
+          </div>
+          <div class="small text-secondary">Manual, precise batching on-site</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-card-checklist" aria-hidden="true"></i>
+            <strong>No extra soil testing</strong>
+          </div>
+          <div class="small text-secondary">Compulsory testing included</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-cash-coin" aria-hidden="true"></i>
+            <strong>Zero advance</strong>
+          </div>
+          <div class="small text-secondary">For projects over 2000 sq.ft</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-building-down" aria-hidden="true"></i>
+            <strong>Basements up to 7 ft</strong>
+          </div>
+          <div class="small text-secondary">Even in water-logged areas</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-camera-video" aria-hidden="true"></i>
+            <strong>CCTV + daily updates</strong>
+          </div>
+          <div class="small text-secondary">Transparency throughout</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-shield-lock" aria-hidden="true"></i>
+            <strong>20-year warranty</strong>
+          </div>
+          <div class="small text-secondary">Structural guarantee</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-clipboard2-check" aria-hidden="true"></i>
+            <strong>Strict QA checks</strong>
+          </div>
+          <div class="small text-secondary">Logs, proofs, inspections</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="usp-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-receipt" aria-hidden="true"></i>
+            <strong>Full transparency</strong>
+          </div>
+          <div class="small text-secondary">Stage-wise payments & BOQ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Compact Process Link -->
+<section class="section reveal pt-0">
+  <div class="container text-center">
+    <div class="process-link-card position-relative overflow-hidden">
+      <div class="process-link-bg"></div>
+      <div class="process-link-content">
+        <div class="process-icon mb-3">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
+        </div>
+        <h3 class="h4 fw-bold mb-2 text-white">Our 6-Step Construction Process</h3>
+        <p class="text-white-50 mb-3">From planning to handover, we make it simple</p>
+        <a href="/services/index.html" class="btn btn-light btn-lg fw-medium shadow-sm">
+          <span>Explore Process</span>
+          <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="process-decoration">
+        <div class="step-dot step-1"></div>
+        <div class="step-dot step-2"></div>
+        <div class="step-dot step-3"></div>
+        <div class="step-connector"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section reveal pt-0">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">What Our Clients Say</h2>
+        <p class="lead text-muted">Hear from satisfied customers who trusted us with their projects</p>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="tquote p-4 rounded-4 h-100">
+          <div class="mb-3"><i class="bi bi-chat-quote" aria-hidden="true"></i></div>
+          <p class="mb-3">"Transparent team. Daily updates and clear stage-wise billing. Delivered on schedule. I'm extremely satisfied with the quality of work and professionalism."</p>
+          <div class="small text-secondary">— Suresh K, Valasaravakkam</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tquote p-4 rounded-4 h-100">
+          <div class="mb-3"><i class="bi bi-chat-quote" aria-hidden="true"></i></div>
+          <p class="mb-3">"Quality materials and strict supervision. Basement waterproofing done right even in our water-logged area. The team was responsive and addressed all our concerns promptly."</p>
+          <div class="small text-secondary">— Priya R, Velachery</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section reveal pt-0">
+  <div class="container">
+    <div class="cta-section p-5 rounded-4 text-center position-relative">
+      <h2 class="h2 fw-bold mb-3">Ready to start your project?</h2>
+      <p class="mb-4 fs-5 opacity-90">Get a free consultation and a clear stage-wise plan.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="/contact.html" class="btn btn-lg">Get Free Consultation</a>
+        <a href="http://localhost:3002/projects.html" class="btn btn-outline-light btn-lg">Our Projects</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Vendor Marquee -->
+<section class="vendor-marquee section pt-0" aria-label="Vendors we use">
+  <div class="container">
+    <div class="row text-center mb-4">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">Trusted Brands We Work With</h2>
+        <p class="lead text-muted">We use only premium materials from reputable brands</p>
+      </div>
+    </div>
+    <div class="vwrap">
+      <!-- Track A -->
+      <ul class="vtrack" id="vtrack-a">
+        <li class="vitem">
+          <img src="assets/vendor-logos/ultratech-cement.png" alt="UltraTech Cement logo" width="160" height="56" loading="lazy">
+          <span class="vname">UltraTech Cement</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/agni-steels-tmt.png" alt="Agni Steels TMT logo" width="160" height="56" loading="lazy">
+          <span class="vname">Agni Steels (TMT)</span>
+        </li>
+        <li class="vitem" data-brand="finolex">
+          <img src="assets/vendor-logos/finolex-cables.png" alt="Finolex Wires logo" width="160" height="56" loading="lazy" decoding="async">
+          <span class="vname">Finolex Wires</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/lt-schneider.png" alt="L&amp;T (Schneider) Switches logo" width="160" height="56" loading="lazy">
+          <span class="vname">L&amp;T (Schneider) Switches</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/anchor-switches.png" alt="Panasonic Anchor Roma logo" width="160" height="56" loading="lazy">
+          <span class="vname">Panasonic Anchor — Roma</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/kajaria.png" alt="Kajaria Tiles logo" width="160" height="56" loading="lazy">
+          <span class="vname">Kajaria Tiles</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/dulux-india.png" alt="ICI Dulux India logo" width="160" height="56" loading="lazy">
+          <span class="vname">ICI Dulux (Dulux India)</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/asian-paints.png" alt="Asian Paints logo" width="160" height="56" loading="lazy">
+          <span class="vname">Asian Paints</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/centuryply-flush-doors.png" alt="CenturyPly Flush Doors logo" width="160" height="56" loading="lazy">
+          <span class="vname">CenturyPly Flush Doors</span>
+        </li>
+        <li class="vitem">
+          <img src="assets/vendor-logos/europa-locks.png" alt="Europa Locks logo" width="160" height="56" loading="lazy">
+          <span class="vname">Europa Locks</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="/assets/logo.png" width="32" height="32" alt="ArunaDevi Builders Logo" decoding="async">
+          <strong class="fs-5">ArunaDevi Builders</strong>
+        </div>
+        <p class="text-secondary mb-0">Materials expertise since 1995 • Site supervision since 2015 • Incorporated 2023. Over 1,00,000 sqft handled.</p>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Company</h6>
+        <ul class="list-unstyled text-secondary">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/projects.html">Projects</a></li>
+          <li><a href="/payments.html">Payments</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Services</h6>
+        <ul class="list-unstyled text-secondary">
+          <li><a href="/services/turnkey-house-construction.html">Turnkey Houses</a></li>
+          <li><a href="/services/commercial-construction.html">Commercial</a></li>
+          <li><a href="/services/engineering-and-process.html">Engineering</a></li>
+          <li><a href="/services/materials-and-brands.html">Materials</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h6>Reach Us</h6>
+        <div class="small text-secondary">
+          <div class="mb-2"><i class="bi bi-geo-alt text-brand me-2" aria-hidden="true"></i>Chennai, Tamil Nadu</div>
+          <div class="mb-2"><i class="bi bi-telephone me-2 text-brand" aria-hidden="true"></i><a href="tel:+919000000000">+91-90000 00000</a></div>
+          <div class="mb-2"><i class="bi bi-whatsapp me-2 text-brand" aria-hidden="true"></i><a href="https://wa.me/919000000000">WhatsApp</a></div>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" aria-label="Facebook" class="text-light"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram" class="text-light"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn" class="text-light"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <div class="small text-secondary d-md-flex justify-content-between align-items-center">
+      <div>© <span id="year"></span> ArunaDevi Builders. All rights reserved.</div>
+      <div class="mt-2 mt-md-0">
+        <a href="/privacy.html" class="text-secondary me-3">Privacy Policy</a>
+        <a href="/terms.html" class="text-secondary">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  (() => {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { 
+      els.forEach(el => el.classList.add('is-visible')); 
+      return; 
+    }
+    
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries){
+        if (e.isIntersecting){ 
+          e.target.classList.add('is-visible'); 
+          io.unobserve(e.target); 
+        }
+      }
+    }, {rootMargin: '0px 0px -10% 0px', threshold: 0.1});
+    
+    els.forEach(el => io.observe(el));
+  })();
+
+  // Pause carousel for users that prefer reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const c = document.querySelector('#heroCarousel');
+    if (c){ 
+      const bs = bootstrap.Carousel.getOrCreateInstance(c, {interval: false}); 
+      bs.pause(); 
+    }
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.style.padding = '10px 0';
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+    } else {
+      navbar.style.padding = '16px 0';
+      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+    }
+  });
+</script>
+</body>
+</html>

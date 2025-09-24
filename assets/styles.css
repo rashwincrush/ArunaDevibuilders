@@ -1,0 +1,179 @@
+
+:root{
+  --brand:#506cc9;
+  --brand-600:#2b5adb;
+  --brand-50:#eef2ff;
+}
+.text-brand{color:var(--brand)!important;}
+.btn-brand{background:var(--brand); color:#fff; border:0;}
+.btn-brand:hover{background:var(--brand-600);}
+.bg-brand-50{background:var(--brand-50);}
+.section{padding:64px 0;}
+.hero{background: radial-gradient(1200px 600px at 80% -10%, var(--brand-50), transparent), linear-gradient(180deg, #fff, #f8fafc);}
+.shadow-soft{box-shadow:0 10px 30px rgba(0,0,0,.08);}
+.feature i{
+  width:48px;height:48px;border-radius:12px;display:inline-grid;
+  place-items:center;background:var(--brand-50); color:var(--brand);
+}
+.gallery img{object-fit:cover;height:240px;}
+.nav-link{font-weight:500;}
+
+/* Navbar brand logo sizing */
+.navbar-brand img{width:44px; height:44px; object-fit:contain;}
+.navbar-brand span{display:none;}
+@media (min-width: 576px){
+  .navbar-brand img{width:60px; height:60px;}
+}
+@media (min-width: 768px){
+  .navbar-brand img{width:60px; height:56px;}
+}
+@media (min-width: 1200px){
+  .navbar-brand img{width:160px; height:64px;}
+}
+
+/* Hero Carousel */
+.hero-carousel{position:relative; overflow:hidden;}
+.hero-carousel .carousel-item{height:72vh; min-height:420px;}
+.hero-carousel .hero-slide{position:relative; width:100%; height:100%;}
+.hero-carousel .hero-slide img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.hero-carousel .hero-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15));}
+.hero-carousel .hero-content{position:absolute; inset:0; display:grid; place-items:center; padding:24px;}
+.hero-carousel .hero-content .inner{max-width:1000px; margin:0 auto; color:#fff; text-align:left;}
+.hero-carousel h1{font-weight:800; letter-spacing:-.02em;}
+.hero-carousel p.lead{opacity:.95;}
+.carousel-indicators [data-bs-target]{background-color:#fff; opacity:.6;}
+.carousel-indicators .active{opacity:1;}
+.carousel-control-prev, .carousel-control-next{filter: drop-shadow(0 4px 10px rgba(0,0,0,.25));}
+
+/* Button variants */
+.btn-outline-light{border-color:#fff; color:#fff;}
+.btn-outline-light:hover{background:#fff; color:#111;}
+
+/* Reveal animations */
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.show{opacity:1; transform:none;}
+
+/* Mobile Sticky CTA */
+.mobile-cta{position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:1px solid rgba(0,0,0,.08); z-index:1030; display:none;}
+.mobile-cta .bar{display:flex; gap:8px; padding:10px 14px;}
+.mobile-cta a{flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; border-radius:10px; text-decoration:none; font-weight:600;}
+.mobile-cta a.call{background:var(--brand-50); color:var(--brand);}
+.mobile-cta a.wa{background:#22c55e; color:#fff;}
+.mobile-cta a.enq{background:var(--brand); color:#fff;}
+@media (max-width: 991.98px){
+  .mobile-cta{display:block;}
+  body{padding-bottom:68px;}
+}
+
+/* Minor polish */
+.badge{border-radius:8px;}
+.rounded-4{border-radius:16px!important;}
+.rounded-3{border-radius:12px!important;}
+
+/* Vendor ticker */
+.vendor-ticker{position:relative; overflow:hidden; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:12px;}
+.vendor-ticker .track{display:flex; gap:28px; align-items:center; white-space:nowrap; will-change:transform; animation:vendor-scroll 22s linear infinite; padding:10px 14px;}
+.vendor-ticker .item{display:inline-flex; align-items:center; gap:10px; color:#334155; font-weight:600;}
+.vendor-ticker .dot{width:6px; height:6px; border-radius:50%; background:var(--brand-600); opacity:.3;}
+@keyframes vendor-scroll{from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* BEGIN: ADB Additions — Vendor rail */
+.vendor-rail-inner { scroll-snap-type: x mandatory; }
+.vendor-item { min-width: 180px; scroll-snap-align: center; }
+.vendor-logo { filter: grayscale(100%); transition: filter .2s ease, transform .2s ease; max-height: 64px; object-fit: contain; }
+.vendor-item:hover .vendor-logo { filter: none; transform: translateY(-2px); }
+.vendor-name { font-weight: 600; font-size: .9rem; }
+/* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Home Blocks */
+.icon-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.06); transform: translateY(-2px); transition: .2s ease; }
+.usp-card { background:#fff; }
+.usp-card i { color: var(--brand-600,#1d4ed8); }
+.process-mini { display:grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap:18px; }
+.pstep-mini { text-align:center; padding:14px; border:1px solid rgba(2,6,23,.08); border-radius:12px; background:#fff; }
+.pstep-mini .picon { width:44px; height:44px; display:grid; place-items:center; border-radius:10px; background:var(--brand-50,#eff6ff); color:var(--brand-600,#1d4ed8); margin:0 auto 6px; }
+.pstep-mini .pt { font-weight:600; font-size:.9rem; }
+.tquote { background:#fff; }
+/* END: ADB Additions */
+/* BEGIN: ADB Additions — Unified Vendor Marquee */
+.vendor-marquee { --gap: 3rem; --duration: 36s; }
+.vendor-marquee .vwrap { position: relative; overflow: hidden; }
+.vendor-marquee .vtrack {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  padding-block: .75rem;
+  animation: vendor-scroll var(--duration) linear infinite;
+  will-change: transform;
+}
+.vendor-marquee .vtrack--clone {
+  animation-delay: calc(var(--duration) / -2);
+}
+@keyframes vendor-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } /* Track A + B together represent a full loop */
+}
+.vitem { flex: 0 0 auto; min-width: 180px; text-align: center; }
+.vitem img { max-height: 56px; object-fit: contain; filter: grayscale(100%); transition: filter .2s ease, transform .2s ease; }
+.vitem:hover img { filter: none; transform: translateY(-2px); }
+.vname { display:block; margin-top:.35rem; font-weight:600; font-size:.9rem; color:#0f172a; }
+
+/* responsiveness */
+@media (max-width: 576px) {
+  .vendor-marquee { --gap: 1.5rem; --duration: 28s; }
+  .vitem { min-width: 150px; }
+  .vitem img { max-height: 48px; }
+}
+
+/* accessibility: user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vendor-marquee .vtrack,
+  .vendor-marquee .vtrack--clone { animation: none; }
+}
+/* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Vendor ticker logos row */
+.vendor-ticker .track-logos{display:flex; gap:28px; align-items:center; white-space:nowrap; will-change:transform; animation:vendor-logos-scroll 30s linear infinite; padding:10px 14px;}
+.vendor-ticker .track-logos .vendor-logo{max-height:42px; object-fit:contain; filter:none!important;}
+@keyframes vendor-logos-scroll{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .vendor-ticker .track-logos{animation:none}
+}
+/* END: ADB Additions */
+/* BEGIN: ADB Additions — Vertical History Timeline */
+.history-rail { position: relative; margin-left: .75rem; padding-left: 1.5rem; }
+.history-rail::before { content:""; position:absolute; left:0; top:0; bottom:0; width:2px; background: var(--brand-600, #1d4ed8); opacity:.3; }
+.history-node { position: relative; margin-bottom: 1.25rem; }
+.history-dot { display:inline-block; background:#fff; border:3px solid var(--brand-600, #1d4ed8); color:#0f172a; border-radius:999px; padding:.35rem .65rem; font-weight:700; font-size:.85rem; }
+.history-card { background:#fff; border:1px solid rgba(2,6,23,.08); border-radius:12px; padding:12px 14px; box-shadow:0 6px 20px rgba(0,0,0,.05); margin-top:.5rem; }
+/* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Horizontal Process Timeline */
+.process-line { position:relative; }
+.process-track { display:grid; grid-template-columns: repeat(6, 1fr); align-items:flex-start; gap: 2rem; position:relative; }
+.process-track::before { content:""; position:absolute; left:0; right:0; top:46px; height:3px; background: linear-gradient(90deg, var(--brand-600,#1d4ed8), rgba(29,78,216,.3)); }
+.pstep { text-align:center; }
+.pno { display:inline-grid; place-items:center; width:84px; height:84px; border:4px solid #22d3ee; color:#0f172a; border-radius:999px; font-weight:800; font-size:1.1rem; background:#fff; margin-bottom:12px; }
+.ptitle { font-weight:800; color:#0f172a; margin-top:.25rem; }
+.pbody { font-size:.9rem; color:#64748b; }
+/* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Unified Vendor Marquee overrides (full color) */
+.vendor-marquee .vitem img { filter: none !important; }
+.vendor-marquee .vitem:hover img { transform: translateY(-2px); }
+/* END: ADB Additions */
+
+/* BEGIN: ADB Additions — Vendor rail behavior overrides */
+/* Show vendor logos in full color by default, and keep a subtle hover lift only */
+.vendor-logo { filter: none !important; }
+.vendor-item:hover .vendor-logo { filter: none !important; transform: translateY(-2px); }
+
+/* Add a gentle auto-drift similar to the ticker (left then right) */
+.vendor-rail .vendor-rail-inner { animation: vendor-rail-drift 40s linear infinite alternate; }
+@keyframes vendor-rail-drift { from { transform: translateX(0); } to { transform: translateX(-25%); } }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .vendor-rail .vendor-rail-inner { animation: none; }
+}
+/* END: ADB Additions */
