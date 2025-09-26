@@ -1,69 +1,132 @@
-<footer class="bg-dark text-light pt-5 pb-4 mt-5">
-  <div class="container">
-    <div class="row g-4 g-lg-5">
+<footer class="footer bg-dark text-light pt-5 pb-4 mt-5 position-relative">
+  <!-- Back to top -->
+  <button id="back-to-top" class="btn btn-brand position-fixed bottom-0 end-0 m-4 rounded-circle shadow"
+          style="z-index:100; display:none;" aria-label="Back to top">
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <div class="container footer-container">
+    <div class="row align-items-start footer-row">
       <!-- Company Info -->
-      <div class="col-md-6 col-lg-4">
-        <div class="d-flex align-items-center gap-3 mb-3">
-          <img src="/assets/logo.png" width="40" height="40" alt="ArunaDevi Builders Logo" decoding="async" class="flex-shrink-0">
-          <div>
-            <h5 class="mb-0 fw-bold">ArunaDevi Builders</h5>
-            <div class="text-brand small">Building Dreams Since 1995</div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="d-flex flex-column align-items-center align-items-md-start gap-1 mb-2">
+          <div class="d-flex align-items-center gap-3">
+            <img src="/assets/logo.png" width="160" height="60" alt="ArunaDevi Builders Logo" decoding="async" class="flex-shrink-0">
+          </div>
+          <div class="text-brand footer-accent small">Building Dreams Since 1995</div>
+
+          <!-- Office Address -->
+          <div class="text-center text-md-start mt-3">
+            <div class="fw-medium small mb-1">Our Office</div>
+            <div class="text-secondary small">1, Postal Colony 2nd St,<br>West Mambalam,<br>Chennai - 600083</div>
+            <a href="https://maps.app.goo.gl/zti5UddoKKSwyA9U8" target="_blank" class="text-brand footer-accent text-decoration-none small">Get Directions</a>
           </div>
         </div>
-        <p class="text-secondary mb-3">Materials expertise since 1995 • Site supervision since 2015 • Incorporated 2023. Over 1,00,000 sqft handled.</p>
-        <div class="d-flex gap-3 mb-3 mb-lg-0">
-          <a href="#" aria-label="Facebook" class="text-light opacity-75-hover"><i class="bi bi-facebook fs-5"></i></a>
-          <a href="#" aria-label="Instagram" class="text-light opacity-75-hover"><i class="bi bi-instagram fs-5"></i></a>
-          <a href="#" aria-label="LinkedIn" class="text-light opacity-75-hover"><i class="bi bi-linkedin fs-5"></i></a>
+
+        <!-- Social -->
+        <div class="d-flex gap-2 mb-3 mb-lg-0">
+          <a href="#" aria-label="Facebook" class="text-light opacity-75-hover social-icon"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" aria-label="Instagram" class="text-light opacity-75-hover social-icon"><i class="bi bi-instagram fs-5"></i></a>
+          <a href="#" aria-label="LinkedIn" class="text-light opacity-75-hover social-icon"><i class="bi bi-linkedin fs-5"></i></a>
+          <a href="#" aria-label="YouTube" class="text-light opacity-75-hover social-icon"><i class="bi bi-youtube fs-5"></i></a>
         </div>
       </div>
 
       <!-- Quick Links -->
-      <div class="col-6 col-md-3 col-lg-2">
-        <h6 class="fw-semibold text-uppercase small mb-3">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="/about.html" class="text-reset text-decoration-none text-secondary-hover">About Us</a></li>
-          <li class="mb-2"><a href="/projects.html" class="text-reset text-decoration-none text-secondary-hover">Our Projects</a></li>
-          <li class="mb-2"><a href="/services/" class="text-reset text-decoration-none text-secondary-hover">Services</a></li>
-          <li class="mb-2"><a href="/contact.html" class="text-reset text-decoration-none text-secondary-hover">Contact</a></li>
-          <li><a href="/payments.html" class="text-reset text-decoration-none text-secondary-hover">Payments</a></li>
+      <div class="col-6 col-md-3 col-lg-3">
+        <h6 class="fw-semibold text-uppercase small mb-2">Quick Links</h6>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-1">
+            <a href="/about.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-chevron-right text-brand footer-accent small"></i> About Us
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/projects.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-chevron-right text-brand footer-accent small"></i> Our Projects
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/services/" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-chevron-right text-brand footer-accent small"></i> Services
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/testimonials.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-chevron-right text-brand footer-accent small"></i> Testimonials
+            </a>
+          </li>
+          <li>
+            <a href="/payments.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-chevron-right text-brand footer-accent small"></i> Payments
+            </a>
+          </li>
         </ul>
       </div>
 
       <!-- Services -->
-      <div class="col-6 col-md-3 col-lg-2">
-        <h6 class="fw-semibold text-uppercase small mb-3">Services</h6>
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="/services/turnkey-house-construction.html" class="text-reset text-decoration-none text-secondary-hover">Turnkey Houses</a></li>
-          <li class="mb-2"><a href="/services/commercial-construction.html" class="text-reset text-decoration-none text-secondary-hover">Commercial</a></li>
-          <li class="mb-2"><a href="/services/engineering-and-process.html" class="text-reset text-decoration-none text-secondary-hover">Engineering</a></li>
-          <li><a href="/services/materials-and-brands.html" class="text-reset text-decoration-none text-secondary-hover">Materials</a></li>
+      <div class="col-6 col-md-3 col-lg-3">
+        <h6 class="fw-semibold text-uppercase small mb-2">Services</h6>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-1">
+            <a href="/services/turnkey-house-construction.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-house-door text-brand footer-accent small"></i> Turnkey Houses
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/services/commercial-construction.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-building text-brand footer-accent small"></i> Commercial
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/services/engineering-and-process.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-gear text-brand footer-accent small"></i> Engineering
+            </a>
+          </li>
+          <li>
+            <a href="/services/materials-and-brands.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-tools text-brand footer-accent small"></i> Materials
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/services/architectural-design.html" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-pencil-square text-brand footer-accent small"></i> Architectural Design
+            </a>
+          </li>
+          <li class="mb-1">
+            <a href="/services/" class="text-reset text-decoration-none text-secondary-hover d-flex align-items-center gap-2">
+              <i class="bi bi-grid text-brand footer-accent small"></i> All services
+            </a>
+          </li>
+
         </ul>
       </div>
 
-      <!-- Contact Info -->
-      <div class="col-md-6 col-lg-4">
-        <h6 class="fw-semibold text-uppercase small mb-3">Contact Us</h6>
-        <ul class="list-unstyled">
+      <!-- Contact -->
+      <div class="col-6 col-md-6 col-lg-2">
+        <h6 class="fw-semibold text-uppercase small mb-2">Contact Us</h6>
+        <ul class="list-unstyled mb-0">
           <li class="mb-3 d-flex">
-            <div class="text-brand me-3"><i class="bi bi-geo-alt-fill"></i></div>
+            <div class="text-brand footer-accent me-3"><i class="bi bi-telephone-fill"></i></div>
             <div>
-              <div class="fw-medium">Our Office</div>
-              <div class="text-secondary">1, Postal Colony 2nd St,<br>West Mambalam,<br>Chennai - 600083</div>
+              <div class="fw-medium"></div>
+              <a href="tel:+919500160769" class="text-reset text-decoration-none text-secondary-hover">+91 95001 60769</a>
+              <div class="text-secondary small">Mon-Sat: 9AM - 6PM</div>
             </div>
           </li>
           <li class="mb-3 d-flex">
-            <div class="text-brand me-3"><i class="bi bi-telephone-fill"></i></div>
+            <div class="text-brand footer-accent me-3"><i class="bi bi-envelope-fill"></i></div>
             <div>
-              <div class="fw-medium">Call Us</div>
-              <a href="tel:+919500160769" class="text-reset text-decoration-none text-secondary-hover">+91 95001 60769</a>
+              <div class="fw-medium"></div>
+              <a href="mailto:info@arunadevibuilders.com" class="text-reset text-decoration-none text-secondary-hover">info@arunadevibuilders.com</a>
             </div>
           </li>
           <li class="d-flex">
-            <div class="text-brand me-3"><i class="bi bi-whatsapp"></i></div>
+            <div class="text-brand footer-accent me-3"><i class="bi bi-whatsapp"></i></div>
             <div>
-              <div class="fw-medium">WhatsApp</div>
+              <div class="fw-medium"></div>
               <a href="https://wa.me/919500160769" class="text-reset text-decoration-none text-secondary-hover">Chat with us</a>
+              <div class="text-secondary small">Quick responses</div>
             </div>
           </li>
         </ul>
@@ -72,19 +135,75 @@
 
     <hr class="border-secondary my-4">
 
-    <div class="small text-center text-secondary">
-      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
-        <div>© <span id="year"></span> ArunaDevi Builders. All rights reserved.</div>
-        <div class="d-none d-md-block">•</div>
-        <div>
-          Developed by <a href="https://www.forgeash.in" target="_blank" rel="noopener" class="text-reset text-decoration-underline-hover">ForgeAsh Technologies</a>
-        </div>
+    <div class="text-center mt-4">
+      <div class="small text-secondary">
+        © <span id="year"></span> ArunaDevi Builders. All rights reserved.
+        Developed by
+        <a href="https://www.forgeash.in" target="_blank" rel="noopener" class="developer-link text-reset text-decoration-underline-hover">
+          ForgeAsh Technologies
+        </a>
       </div>
     </div>
   </div>
-</footer>
 
-<script>
-  // Footer year (same as index.html)
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+  <!-- Component-scoped styles (safe to keep inside) -->
+  <style>
+    .footer { background: linear-gradient(135deg,#0f172a 0%,#1e293b 100%); }
+    .footer-container{ padding-left:.75rem; padding-right:.75rem; }
+    .footer-row{ --bs-gutter-x:.75rem; --bs-gutter-y:.75rem; }
+    @media (min-width:992px){ .footer-row{ --bs-gutter-x:.85rem; } } /* tighter desktop gutters */
+
+    /* Accent color limited to footer - now blue */
+    .footer-accent{ color:#2d73c8 !important; }
+
+    .btn-brand{ background-color:#d4af37; border-color:#d4af37; color:#000; }
+    .btn-brand:hover{ background-color:#b8941f; border-color:#b8941f; color:#000; }
+
+    .text-secondary-hover:hover{ color:#d4af37 !important; }
+    .opacity-75-hover:hover{ opacity:1 !important; transform:translateY(-2px); transition:all .3s ease; }
+
+    .social-icon{
+      display:inline-flex; justify-content:center; align-items:center;
+      width:38px; height:38px; border-radius:50%;
+      background:rgba(255,255,255,.06); transition:.25s ease;
+    }
+    .social-icon:hover{ background:#d4af37; color:#000 !important; transform:translateY(-3px); }
+
+    #back-to-top{ width:48px; height:48px; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+
+    /* Link + headings polish */
+    footer h6{ color:#fff; font-weight:600; margin-bottom:.6rem; }
+    footer a{ color:#cbd5e1; text-decoration:none; transition:all .2s ease; display:inline-block; }
+    footer a:hover{ color:#fff; transform:translateX(3px); }
+    footer .bi{ font-size:1.2rem; }
+
+    /* Reduce list item gaps to keep columns tight */
+    .footer ul li.mb-1{ margin-bottom:.25rem !important; }
+
+    /* Ensure the Quick Links column sits closer to the logo/address column */
+    @media (min-width:992px){
+      .footer .col-lg-2{ padding-left:.6rem; padding-right:.6rem; }
+      .footer .col-lg-4{ padding-right:.6rem; }
+    }
+
+    /* Avoid tall empty columns; align to top */
+    footer .row > [class*="col-"]{ display:flex; flex-direction:column; justify-content:flex-start; }
+
+    .developer-link:hover{ color:#fff !important; }
+  </style>
+
+  <script>
+    // Auto year
+    (function(){ var y=document.getElementById('year'); if(y){ y.textContent=new Date().getFullYear(); } })();
+
+    // Back to top
+    (function(){
+      const btn=document.getElementById('back-to-top');
+      if(!btn) return;
+      const toggle=()=>{ btn.style.display = (window.pageYOffset>300) ? 'block' : 'none'; };
+      toggle();
+      window.addEventListener('scroll', toggle, { passive:true });
+      btn.addEventListener('click', ()=>window.scrollTo({ top:0, behavior:'smooth' }));
+    })();
+  </script>
+</footer>

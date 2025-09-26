@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Construction - Luxury Minimal</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --almost-black: #0A0A0A;
+            --cool-gray: #EDEFF2;
+            --gradient: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            --gradient-subtle: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--almost-black);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gradient-line {
+            height: 1px;
+            background: var(--gradient);
+            width: 100%;
+        }
+
+        .gradient-accent {
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--cool-gray);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: var(--almost-black);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--almost-black);
+            text-decoration: none;
+            font-weight: 300;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .hero-text h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-text h1::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 120px;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            max-width: 400px;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            background: var(--almost-black);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 2px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--almost-black);
+            padding: 1rem 2.5rem;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        .btn-ghost::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 2px;
+            padding: 1px;
+            background: var(--gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: exclude;
+            mask-composite: exclude;
+        }
+
+        /* Our Promise Section */
+        .promise {
+            padding: 8rem 0;
+            background: var(--cool-gray);
+        }
+
+        .promise h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .promise h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--gradient);
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .promise-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .promise-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--almost-black);
+        }
+
+        .promise-card p {
+            color: #666;
+            font-weight: 300;
+        }
+
+        /* Signature Projects */
+        .projects {
+            padding: 8rem 0;
+        }
+
+        .projects h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .projects h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--gradient);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--almost-black);
+        }
+
+        .project-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .spec {
+            background: var(--cool-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .project-info p {
+            color: #666;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 0;
+            background: var(--cool-gray);
+        }
+
+        .process h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--gradient);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 2rem 1.5rem;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -1rem;
+            width: 2rem;
+            height: 1px;
+            background: var(--gradient);
+            transform: translateY(-50%);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+        }
+
+        .process-step h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--almost-black);
+        }
+
+        .process-step p {
+            color: #666;
+            font-weight: 300;
+            font-size: 0.85rem;
+        }
+
+        /* Lead Form Section */
+        .lead-form {
+            padding: 8rem 0;
+            background: var(--almost-black);
+            color: var(--white);
+        }
+
+        .lead-form h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .lead-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: var(--gradient);
+        }
+
+        .lead-form p {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+        }
+
+        .step-indicator {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333;
+            transition: background 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: var(--gradient);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--cool-gray);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--almost-black);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #666;
+            text-decoration: none;
+            font-weight: 300;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--almost-black);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--cool-gray);
+            color: #999;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            
+            .promise-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .promise-grid,
+            .projects-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Elevate</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Precision Built<br>Luxury Homes</h1>
+                    <p>We craft exceptional residences with uncompromising attention to detail, quality assurance, and architectural excellence.</p>
+                    <a href="#contact" class="btn-primary">Book a Site Visit</a>
+                    <a href="#projects" class="btn-ghost">View Projects</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury modern home exterior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Promise Section -->
+    <section class="promise">
+        <div class="container">
+            <h2>Our Promise</h2>
+            <div class="promise-grid">
+                <div class="promise-card">
+                    <h3>QA Data Transparency</h3>
+                    <p>Complete quality assurance documentation and material certifications provided for every project milestone.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>Zero-Advance Model</h3>
+                    <p>Pay as progress is completed. No upfront payments required, ensuring your investment is protected at every stage.</p>
+                </div>
+                <div class="promise-card">
+                    <h3>7-Foot Basement Standard</h3>
+                    <p>All our homes feature spacious 7-foot basement ceiling height for maximum utility and comfort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Projects -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Signature Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Modern villa with pool">
+                    </div>
+                    <div class="project-info">
+                        <h3>The Meridian Villa</h3>
+                        <div class="project-specs">
+                            <span class="spec">4,500 sq ft</span>
+                            <span class="spec">5 BR</span>
+                            <span class="spec">Premium</span>
+                        </div>
+                        <p>Contemporary luxury residence featuring floor-to-ceiling windows and integrated smart home technology.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Modern family home">
+                    </div>
+                    <div class="project-info">
+                        <h3>Oakwood Residence</h3>
+                        <div class="project-specs">
+                            <span class="spec">3,200 sq ft</span>
+                            <span class="spec">4 BR</span>
+                            <span class="spec">Family</span>
+                        </div>
+                        <p>Thoughtfully designed family home with open-concept living and sustainable building materials.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1600563438938-a42d4637c485?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Contemporary townhouse">
+                    </div>
+                    <div class="project-info">
+                        <h3>Urban Heights</h3>
+                        <div class="project-specs">
+                            <span class="spec">2,800 sq ft</span>
+                            <span class="spec">3 BR</span>
+                            <span class="spec">Urban</span>
+                        </div>
+                        <p>Sophisticated townhouse design maximizing space efficiency without compromising on luxury amenities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2>Our Process</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Initial meeting to understand your vision and requirements</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design</h3>
+                    <p>Architectural planning and detailed project specification</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Permits</h3>
+                    <p>All regulatory approvals and documentation handled</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Construction</h3>
+                    <p>Precise execution with quality checkpoints</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Handover</h3>
+                    <p>Final inspection and warranty documentation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Form Section -->
+    <section class="lead-form" id="contact">
+        <div class="container">
+            <h2>Start Your Project</h2>
+            <p>Tell us about your vision and we'll guide you through the next steps</p>
+            <div class="form-container">
+                <form id="leadForm">
+                    <!-- Step 1 -->
+                    <div class="form-step active">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step">
+                        <div class="form-group">
+                            <label for="project-type">Project Type</label>
+                            <select id="project-type" name="project-type" required>
+                                <option value="">Select project type</option>
+                                <option value="new-construction">New Construction</option>
+                                <option value="renovation">Major Renovation</option>
+                                <option value="addition">Home Addition</option>
+                                <option value="commercial">Commercial</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select budget range</option>
+                                <option value="500k-1m">$500K - $1M</option>
+                                <option value="1m-2m">$1M - $2M</option>
+                                <option value="2m-5m">$2M - $5M</option>
+                                <option value="5m+">$5M+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step">
+                        <div class="form-group">
+                            <label for="timeline">Preferred Timeline</label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="immediate">Ready to start immediately</option>
+                                <option value="3-months">Within 3 months</option>
+                                <option value="6-months">Within 6 months</option>
+                                <option value="planning">Still planning</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Details</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your project vision..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-navigation">
+                        <button type="button" class="btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                        <div class="step-indicator">
+                            <span class="step-dot active"></span>
+                            <span class="step-dot"></span>
+                            <span class="step-dot"></span>
+                        </div>
+                        <button type="button" class="btn-primary" id="nextBtn">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>(555) 123-4567</p>
+                    <p>info@elevate-construction.com</p>
+                    <p>123 Builder Lane<br>Premium City, PC 12345</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#">Custom Homes</a>
+                    <a href="#">Renovations</a>
+                    <a href="#">Commercial</a>
+                    <a href="#">Consulting</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Portfolio</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elevate Construction. All rights reserved. Licensed • Bonded • Insured</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Multi-step form functionality
+        let currentStep = 0;
+        const formSteps = document.querySelectorAll('.form-step');
+        const stepDots = document.querySelectorAll('.step-dot');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        function showStep(step) {
+            // Hide all steps
+            formSteps.forEach(s => s.classList.remove('active'));
+            stepDots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current step
+            formSteps[step].classList.add('active');
+            stepDots[step].classList.add('active');
+            
+            // Update navigation buttons
+            prevBtn.style.display = step > 0 ? 'block' : 'none';
+            nextBtn.textContent = step === formSteps.length - 1 ? 'Submit' : 'Next';
+        }
+
+        nextBtn.addEventListener('click', function() {
+            if (currentStep < formSteps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                // Submit form
+                alert('Thank you! We\'ll contact you within 24 hours to schedule your consultation.');
+                // Reset form
+                document.getElementById('leadForm').reset();
+                currentStep = 0;
+                showStep(currentStep);
+            }
+        });
+
+        prevBtn.addEventListener('click', function() {
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor

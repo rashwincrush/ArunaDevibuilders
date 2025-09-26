@@ -247,4 +247,11 @@ footer a:hover {
 footer .bi { 
   font-size: 1.2rem; 
 }
-/* END: Global footer styles */
+/* Footer global helpers (lightweight; safe across pages) */
+.footer .container.footer-container { padding-left: .75rem; padding-right: .75rem; }
+.footer .footer-row { --bs-gutter-x: .85rem; --bs-gutter-y: .75rem; }
+@media (max-width: 991.98px){ .footer .footer-row { --bs-gutter-x: .75rem; } }
+
+/* Ensure footer columns align to top and have compact lists */
+footer .row > [class*="col-"] { display:flex; flex-direction:column; justify-content:flex-start; }
+footer ul li.mb-1 { margin-bottom: .25rem !important; }

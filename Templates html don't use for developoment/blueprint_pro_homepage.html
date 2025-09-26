@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blueprint Pro - From Peg to Handover</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0B1D33;
+            --cyan: #12C7E1;
+            --orange: #FF6A00;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --border-gray: #E5E7EB;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 29, 51, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        /* Blueprint Grid Background */
+        .blueprint-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(var(--cyan) 1px, transparent 1px),
+                linear-gradient(90deg, var(--cyan) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--navy);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-icons {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .icon-item {
+            text-align: center;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .icon-item:hover {
+            opacity: 1;
+        }
+
+        .icon-svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            stroke: var(--cyan);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .cta-button {
+            background: var(--cyan);
+            color: var(--navy);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--white);
+            box-shadow: 0 0 0 2px var(--orange);
+        }
+
+        /* Engineering Process Timeline */
+        .process-section {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--navy);
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 2rem 0;
+            overflow-x: auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: var(--cyan);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            text-align: center;
+            min-width: 150px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid var(--cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Warranty Cards */
+        .warranty-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .warranty-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .warranty-card {
+            background: var(--white);
+            border: 2px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .warranty-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(18, 199, 225, 0.1);
+        }
+
+        .warranty-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .warranty-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .warranty-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .warranty-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        /* Project Stats */
+        .stats-section {
+            padding: 6rem 0;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cyan);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .stat-unit {
+            font-size: 1.5rem;
+            color: var(--orange);
+        }
+
+        /* Materials Marquee */
+        .materials-section {
+            padding: 4rem 0;
+            background: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            gap: 4rem;
+        }
+
+        .brand-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--navy);
+            white-space: nowrap;
+            border: 1px solid var(--border-gray);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: 2px solid var(--border-gray);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab-button.active {
+            background: var(--cyan);
+            border-color: var(--cyan);
+            color: var(--white);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--navy), var(--cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+        }
+
+        .project-details {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-status {
+            display: inline-block;
+            background: var(--cyan);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Contact & FAQ */
+        .contact-section {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: transparent;
+            border: none;
+            padding: 1.5rem;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+            color: #666;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .contact-info h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            stroke: var(--cyan);
+            fill: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                display: none;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .stat-number {
+            animation: countUp 2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Blueprint Pro</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#warranty">Warranty</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="blueprint-grid"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="subtitle">ENGINEERING EXCELLENCE</div>
+                    <h1>From Peg to Handover</h1>
+                    <p>Professional construction services with complete engineering oversight, from initial surveying to final quality assurance. Building with precision, delivering with confidence.</p>
+                    <a href="#contact" class="cta-button">Start Your Project</a>
+                </div>
+                <div class="hero-icons">
+                    <div class="icon-item">
+                        <svg class="icon-svg" viewBox="0 0 24 24">
+                            <path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"/>
+                            <circle cx="12" cy="7" r="4"/>
+                            <path d="M12 14v7"/>
+                            <path d="M8 14l4 7 4-7"/>
+                        </svg>
+                        <div>Total Station Survey</div>
+                    </div>
+                    <div class="icon-item">
+                        <svg class="icon-svg" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <rect x="7" y="7" width="10" height="10" rx="1" ry="1"/>
+                        </svg>
+                        <div>Cube Test</div>
+                    </div>
+                    <div class="icon-item">
+                        <svg class="icon-svg" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        <div>Slump Cone Test</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Process Timeline -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <h2 class="section-title">Engineering & Process Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">01</div>
+                    <h3 class="timeline-title">Survey</h3>
+                    <p class="timeline-desc">Total station surveying & site analysis</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">02</div>
+                    <h3 class="timeline-title">Soil Testing</h3>
+                    <p class="timeline-desc">Comprehensive soil investigation</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">03</div>
+                    <h3 class="timeline-title">BOQ</h3>
+                    <p class="timeline-desc">Detailed bill of quantities</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">04</div>
+                    <h3 class="timeline-title">RCC Work</h3>
+                    <p class="timeline-desc">Reinforced concrete construction</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">05</div>
+                    <h3 class="timeline-title">QA Testing</h3>
+                    <p class="timeline-desc">Quality assurance & testing</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">06</div>
+                    <h3 class="timeline-title">Handover</h3>
+                    <p class="timeline-desc">Final inspection & delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structural Warranty -->
+    <section class="warranty-section" id="warranty">
+        <div class="container">
+            <h2 class="section-title">Structural Warranty Coverage</h2>
+            <div class="warranty-cards">
+                <div class="warranty-card">
+                    <h3>Coverage Includes</h3>
+                    <ul>
+                        <li>Structural integrity defects</li>
+                        <li>Foundation settlement issues</li>
+                        <li>Major structural cracks</li>
+                        <li>Waterproofing failures</li>
+                        <li>Load-bearing element defects</li>
+                        <li>Engineering design flaws</li>
+                    </ul>
+                </div>
+                <div class="warranty-card">
+                    <h3>Warranty Terms</h3>
+                    <ul>
+                        <li>10-year structural warranty</li>
+                        <li>2-year general defects</li>
+                        <li>1-year finishing work</li>
+                        <li>6-month MEP systems</li>
+                        <li>Annual inspection service</li>
+                        <li>Emergency response support</li>
+                    </ul>
+                </div>
+                <div class="warranty-card">
+                    <h3>Exclusions</h3>
+                    <ul>
+                        <li>Natural disasters & acts of God</li>
+                        <li>Unauthorized modifications</li>
+                        <li>Normal wear and tear</li>
+                        <li>Cosmetic surface defects</li>
+                        <li>Third-party damage</li>
+                        <li>Maintenance negligence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Statistics -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Project Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="2.5">0</span><span class="stat-unit">M</span>
+                    <div class="stat-label">Sq Ft Built</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="450">0</span>
+                    <div class="stat-label">Slabs Poured</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="180">0</span>
+                    <div class="stat-label">Days Avg Timeline</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span><span class="stat-unit">%</span>
+                    <div class="stat-label">Quality Score</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials & Brands -->
+    <section class="materials-section">
+        <div class="container">
+            <h2 class="section-title">Trusted Materials & Brands</h2>
+            <div class="marquee">
+                <div class="brand-item">UltraTech Cement</div>
+                <div class="brand-item">TATA Steel</div>
+                <div class="brand-item">Birla White</div>
+                <div class="brand-item">Asian Paints</div>
+                <div class="brand-item">Kajaria Tiles</div>
+                <div class="brand-item">Hindware</div>
+                <div class="brand-item">Wipro Lighting</div>
+                <div class="brand-item">L&T Concrete</div>
+                <div class="brand-item">JSW Steel</div>
+                <div class="brand-item">ACC Cement</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Projects</h2>
+            <div class="project-tabs">
+                <button class="tab-button active" data-tab="ongoing">Ongoing Projects</button>
+                <button class="tab-button" data-tab="completed">Completed Projects</button>
+            </div>
+            <div class="project-grid" id="ongoing-projects">
+                <div class="project-card">
+                    <div class="project-image">Residential Complex</div>
+                    <div class="project-info">
+                        <h3 class="project-title">Green Valley Residency</h3>
+                        <p class="project-details">45,000 sq ft • G+4 Structure • 36 Units</p>
+                        <span class="project-status">75% Complete</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Commercial Building</div>
+                    <div class="project-info">
+                        <h3 class="project-title">Tech Park Phase II</h3>
+                        <p class="project-details">80,000 sq ft • G+8 Structure • Office Complex</p>
+                        <span class="project-status">60% Complete</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Infrastructure</div>
+                    <div class="project-info">
+                        <h3 class="project-title">Metro Bridge Construction</h3>
+                        <p class="project-details">1.2 km Length • RCC Box Girder • Urban Transit</p>
+                        <span class="project-status">40% Complete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-grid" id="completed-projects" style="display: none;">
+                <div class="project-card">
+                    <div class="project-image">Shopping Mall</div>
+                    <div class="project-info">
+                        <h3 class="project-title">Central Mall Complex</h3>
+                        <p class="project-details">120,000 sq ft • G+3 Structure • Retail Space</p>
+                        <span class="project-status" style="background: #22C55E;">Completed 2024</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Hospital Building</div>
+                    <div class="project-info">
+                        <h3 class="project-title">MediCore Hospital</h3>
+                        <p class="project-details">65,000 sq ft • G+5 Structure • 150 Beds</p>
+                        <span class="project-status" style="background: #22C55E;">Completed 2024</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Educational</div>
+                    <div class="project-info">
+                        <h3 class="project-title">Engineering College</h3>
+                        <p class="project-details">200,000 sq ft • Multiple Blocks • Campus</p>
+                        <span class="project-status" style="background: #22C55E;">Completed 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & FAQ -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & FAQ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>123 Engineering Plaza, Industrial Area, Chennai - 600001</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>+91 98765 43210</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>info@blueprintpro.com</span>
+                    </div>
+                </div>
+                <div class="faq-section">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is included in your construction warranty?
+                            <span>+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Our comprehensive warranty includes 10 years for structural elements, 2 years for general construction defects, and 1 year for finishing work. We provide annual inspections and emergency response support.

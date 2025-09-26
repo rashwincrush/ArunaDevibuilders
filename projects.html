@@ -6,6 +6,13 @@
   <title>Projects — ArunaDevi Builders</title>
   <meta name="description" content="Turnkey house & commercial construction in Chennai with quality assurance and transparent stages.">
   <link rel="icon" href="/assets/favicon.png">
+  <meta name="color-scheme" content="light only">
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://scontent.cdninstagram.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//scontent.cdninstagram.com">
 
   <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,66 +23,85 @@
 
   <!-- Inline helpers (safe, minimal) -->
   <style>
-    /* Card image aspect */
+    :root{
+      --brand:#1e40af;
+      --ink:#0f172a;
+      --muted:#6c757d;
+      --card-r:1rem;
+    }
+    /* Page chrome */
+    body{ text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased; }
+    .section{ padding:64px 0; }
+
+    /* Header row alignment and microcopy tone */
+    header.section .text-secondary.small{ opacity:.9 }
+
+    /* Tabs: pill look + focus states */
+    .filter-tabs .nav-link{
+      font-weight:700; border-radius:999px; padding:.5rem 1rem;
+    }
+    .filter-tabs .nav-link.active{
+      background:var(--brand); color:#fff;
+      box-shadow:0 6px 18px rgba(30,64,175,.25);
+    }
+    .filter-tabs .nav-link:focus-visible{ outline:3px solid rgba(30,64,175,.35); outline-offset:2px; }
+
+    /* Cards & media */
     .project-thumb{ aspect-ratio: 4/3; object-fit: cover; }
-    /* Play overlay */
+    .rounded-4{ border-radius:var(--card-r)!important; }
+    .shadow-soft{ box-shadow:0 10px 30px rgba(0,0,0,.08); }
+
+    .media-card{ position:relative; cursor:pointer; }
+    .media-card img{ transition:transform .35s ease, box-shadow .35s ease; }
+    .media-card:hover img{ transform:translateY(-2px) scale(1.01); }
+    .media-card:focus-visible{ outline:3px solid rgba(30,64,175,.35); outline-offset:2px; border-radius:var(--card-r); }
+
+    /* Play/IG overlay */
     .play-overlay{
       position:absolute; inset:0; display:grid; place-items:center;
       background:linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.25));
-      opacity:.0; transition:.2s ease;
+      opacity:0; transition:opacity .2s ease;
+      border-radius:var(--card-r);
     }
-    .media-card{ position:relative; cursor:pointer; }
     .media-card:hover .play-overlay{ opacity:1; }
     .play-btn{
       display:inline-grid; place-items:center; width:64px; height:64px;
       border-radius:50%; background:#fff; color:#000; box-shadow:0 10px 30px rgba(0,0,0,.2);
     }
-    .filter-tabs .nav-link{ font-weight:600; }
-    .small-muted{ color: var(--bs-secondary-color, #6c757d); }
-    .gallery-caption{font-size:.9rem; color: var(--bs-secondary-color, #6c757d);}
-    .rounded-4{ border-radius:1rem!important; } /* ensure rounded */
-    .shadow-soft{ box-shadow:0 10px 30px rgba(0,0,0,.08); }
+
+    .small-muted{ color: var(--bs-secondary-color, var(--muted)); }
+    .gallery-caption{ font-size:.9rem; color: var(--bs-secondary-color, var(--muted)); }
+
+    /* Modal polish */
+    .modal-content{ border-radius:var(--card-r); overflow:hidden; }
+    .modal-header-lite{ display:flex; align-items:center; justify-content:space-between; gap:.75rem; padding:.75rem 1rem; border-bottom:1px solid rgba(0,0,0,.08); }
+    .modal-title-lite{ font-weight:600; margin:0; }
+
+    /* Reveal on scroll */
+    .reveal,[data-reveal]{ opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
+    .reveal.is-visible,[data-reveal].is-visible{ opacity:1; transform:none; }
+
+    /* Respect user motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      .media-card img,
+      .reveal,[data-reveal]{ transition:none !important; transform:none !important; }
+      .play-overlay{ transition:none !important; }
+    }
+
+    /* Responsive tweaks */
+    @media (min-width:992px){
+      .card-body.px-0{ padding-right:0!important; padding-left:0!important; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
-      <img src="/assets/logo.png" width="36" height="36" alt="Logo">
-      <span class="fw-semibold">ArunaDevi Builders</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/services/index.html">All Services</a></li>
-            <li><a class="dropdown-item" href="/services/turnkey-house-construction.html">Turnkey House Construction</a></li>
-            <li><a class="dropdown-item" href="/services/commercial-construction.html">Commercial Construction</a></li>
-            <li><a class="dropdown-item" href="/services/engineering-and-process.html">Engineering & Process</a></li>
-            <li><a class="dropdown-item" href="/services/materials-and-brands.html">Materials & Brands</a></li>
-            <li><a class="dropdown-item" href="/services/concrete-methods.html">Concrete Methods</a></li>
-            <li><a class="dropdown-item" href="/services/architectural-design.html">Architectural Design</a></li>
-            <li><a class="dropdown-item" href="/services/structural-designing.html">Structural Designing</a></li>
-            <li><a class="dropdown-item" href="/services/building-plan-approval.html">Building Plan Approval</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="/payments.html">Payments</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="header-placeholder"></div>
+<script src="/assets/header-loader.js" defer></script>
 
 <!-- Header -->
-<header class="section reveal">
+<header class="section reveal" data-reveal>
   <div class="container">
     <div class="d-flex align-items-end justify-content-between mb-3">
       <h1 class="fw-bold mb-0">Projects</h1>
@@ -109,68 +135,37 @@
 </header>
 
 <!-- Tab Contents -->
-<section class="section pt-4 reveal">
+<section class="section pt-4 reveal" data-reveal>
   <div class="container">
     <div class="tab-content" id="projectTabsContent">
       <!-- Completed Projects -->
       <div class="tab-pane fade show active" id="completed" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
         <div class="row g-4">
-          <!-- Valasaravakkam -->
+          <!-- Completed Project 1 -->
           <div class="col-sm-6 col-lg-4">
             <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/p1.png" alt="Valasaravakkam project">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/Vendor Logo/Project Pics/Completed1.jpg"
+                   alt="Completed project 1"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
               <div class="card-body px-0">
-                <h6 class="mb-1">Valasaravakkam</h6>
-                <div class="small-muted">4,500 sq ft • stilt + 2 buildings + lift • 10 months</div>
+                <h6 class="mb-1">Completed Project 1</h6>
+                <div class="small-muted">Residential build</div>
               </div>
             </div>
           </div>
-          <!-- Velachery -->
+          <!-- Completed Project 2 -->
           <div class="col-sm-6 col-lg-4">
             <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/p2.png" alt="Velachery residence">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/Vendor Logo/Project Pics/Completed2.jpg"
+                   alt="Completed project 2"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
               <div class="card-body px-0">
-                <h6 class="mb-1">Velachery</h6>
-                <div class="small-muted">7,500 sq ft • 12 months • Granite • Burma-teak doors • Custom tiles • PU polish</div>
-              </div>
-            </div>
-          </div>
-          <!-- Ashok Nagar -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/p3.png" alt="Ashok Nagar commercial project">
-              <div class="card-body px-0">
-                <h6 class="mb-1">Ashok Nagar</h6>
-                <div class="small-muted">8,000 sq ft • Commercial</div>
-              </div>
-            </div>
-          </div>
-          <!-- Ongoing -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/p4.png" alt="Ongoing construction">
-              <div class="card-body px-0">
-                <h6 class="mb-1">Ongoing</h6>
-                <div class="small-muted">Work in progress</div>
-              </div>
-            </div>
-          </div>
-          <!-- Add more completed projects as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/projects/completed-1.jpg" alt="Completed project">
-              <div class="card-body px-0">
-                <h6 class="mb-1">Adambakkam</h6>
-                <div class="small-muted">G+2 • 6,200 sq ft • Basement 7 ft • CCTV updates</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="card border-0">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/projects/completed-2.jpg" alt="Completed project">
-              <div class="card-body px-0">
-                <h6 class="mb-1">Tambaram</h6>
-                <div class="small-muted">Villa • 3,900 sq ft • Turnkey</div>
+                <h6 class="mb-1">Completed Project 2</h6>
+                <div class="small-muted">Residential build</div>
               </div>
             </div>
           </div>
@@ -182,26 +177,42 @@
         <div class="row g-4">
           <!-- Each item opens in lightbox -->
           <div class="col-6 col-lg-3">
-            <div class="media-card" data-media="image" data-src="/assets/struct/raft-foundation.jpg" data-title="Raft Foundation — Rebar grid & QA checks">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/struct/raft-foundation.jpg" alt="Raft foundation">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Raft Foundation — Rebar grid & QA checks"
+                 data-media="image" data-src="/assets/struct/raft-foundation.jpg" data-title="Raft Foundation — Rebar grid & QA checks">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/struct/raft-foundation.jpg" alt="Raft foundation"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:992px) 25vw, 50vw">
             </div>
             <div class="gallery-caption mt-2">Raft Foundation • Rebar grid & QA</div>
           </div>
           <div class="col-6 col-lg-3">
-            <div class="media-card" data-media="image" data-src="/assets/struct/column-cage.jpg" data-title="Column Reinforcement — Tie spacing & cover blocks">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/struct/column-cage.jpg" alt="Column reinforcement">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Column Reinforcement — Tie spacing & cover blocks"
+                 data-media="image" data-src="/assets/struct/column-cage.jpg" data-title="Column Reinforcement — Tie spacing & cover blocks">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/struct/column-cage.jpg" alt="Column reinforcement"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:992px) 25vw, 50vw">
             </div>
             <div class="gallery-caption mt-2">Column Reinforcement</div>
           </div>
           <div class="col-6 col-lg-3">
-            <div class="media-card" data-media="image" data-src="/assets/struct/slab-decking.jpg" data-title="Slab Deck — MEP sleeves & shuttering">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/struct/slab-decking.jpg" alt="Slab decking">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Slab Deck — MEP sleeves & shuttering"
+                 data-media="image" data-src="/assets/struct/slab-decking.jpg" data-title="Slab Deck — MEP sleeves & shuttering">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/struct/slab-decking.jpg" alt="Slab decking"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:992px) 25vw, 50vw">
             </div>
             <div class="gallery-caption mt-2">Slab Deck • MEP sleeves</div>
           </div>
           <div class="col-6 col-lg-3">
-            <div class="media-card" data-media="image" data-src="/assets/struct/staircase-rebar.jpg" data-title="Staircase Rebar — Anti-skid nosing detailing">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/struct/staircase-rebar.jpg" alt="Staircase rebar">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Staircase Rebar — Anti-skid nosing detailing"
+                 data-media="image" data-src="/assets/struct/staircase-rebar.jpg" data-title="Staircase Rebar — Anti-skid nosing detailing">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/struct/staircase-rebar.jpg" alt="Staircase rebar"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:992px) 25vw, 50vw">
             </div>
             <div class="gallery-caption mt-2">Staircase Rebar</div>
           </div>
@@ -212,18 +223,30 @@
       <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab" tabindex="0">
         <div class="row g-4">
           <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="image" data-src="/assets/featured/feature-1.jpg" data-title="Custom teak main door — PU polish">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/featured/feature-1.jpg" alt="Featured 1">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Custom teak main door — PU polish"
+                 data-media="image" data-src="/assets/featured/feature-1.jpg" data-title="Custom teak main door — PU polish">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/featured/feature-1.jpg" alt="Featured 1"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
             </div>
           </div>
           <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="image" data-src="/assets/featured/feature-2.jpg" data-title="Granite flooring — book-match finish">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/featured/feature-2.jpg" alt="Featured 2">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: Granite flooring — book-match finish"
+                 data-media="image" data-src="/assets/featured/feature-2.jpg" data-title="Granite flooring — book-match finish">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/featured/feature-2.jpg" alt="Featured 2"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
             </div>
           </div>
           <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="image" data-src="/assets/featured/feature-3.jpg" data-title="7 ft Basement — moisture barrier">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/featured/feature-3.jpg" alt="Featured 3">
+            <div class="media-card" role="button" tabindex="0" aria-label="Open image: 7 ft Basement — moisture barrier"
+                 data-media="image" data-src="/assets/featured/feature-3.jpg" data-title="7 ft Basement — moisture barrier">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="/assets/featured/feature-3.jpg" alt="Featured 3"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
             </div>
           </div>
           <!-- Add more featured images as needed -->
@@ -233,37 +256,62 @@
       <!-- Instagram / Videos -->
       <div class="tab-pane fade" id="instagram" role="tabpanel" aria-labelledby="instagram-tab" tabindex="0">
         <div class="row g-4">
-          <!-- Local MP4 example (autoplay on click) -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="video" data-src="/assets/videos/site-update-1.mp4" data-title="Site Update — Slab pour (Day 42)">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/videos/thumbs/site-update-1.jpg" alt="Site update video thumbnail" loading="lazy">
-              <div class="play-overlay rounded-4">
-                <span class="play-btn"><i class="bi bi-play-fill fs-2"></i></span>
-              </div>
-            </div>
-            <div class="gallery-caption mt-2">Slab pour (Day 42)</div>
-          </div>
 
-          <!-- Instagram Reel embed (opens in modal). Replace the URL with your reel/post link -->
+          <!-- Instagram Reel embed (first card) -->
           <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="instagram" data-src="https://www.instagram.com/reel/REEL_ID_HERE/embed" data-title="Reel — Basement waterproofing">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/instagram/thumbs/reel-1.jpg" alt="Instagram reel" loading="lazy">
-              <div class="play-overlay rounded-4">
+            <div class="media-card" role="button" tabindex="0"
+                 data-media="instagram"
+                 data-src="https://www.instagram.com/reel/DJMkTgAzk5w/?utm_source=ig_web_copy_link&igsh=MTloYWZzc2RzcndsdA=="
+                 data-title="Reel — Video one"
+                 aria-label="Open Instagram Reel: Video one">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="https://scontent.cdninstagram.com/v/t51.75761-15/495393004_18042192983538630_8357731786404497394_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=108&ccb=1-7&_nc_sid=18de74&_nc_ohc=1Lh0bJAWElcQ7kNvwGHQBRb&_nc_oc=AdmMWObWGQu2ULdbKyJccRosnAee6p--UoqG3cDhzGk7QVQFTOPnLv8HeRcaxys9uzM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=Da0eZSOmDL1DklMWv5nAfA&oh=00_AfYRHH2gvWyNkQOh5sV4jMplKALLT7hVqbjfODusaNWGvg&oe=68DAE751"
+                   alt="Instagram reel thumbnail - Video one"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
+              <div class="play-overlay">
                 <span class="play-btn"><i class="bi bi-instagram fs-2"></i></span>
               </div>
             </div>
-            <div class="gallery-caption mt-2">Basement waterproofing</div>
+            <div class="gallery-caption mt-2">Video one</div>
+          </div>
+
+          <!-- Instagram Reel embed -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="media-card" role="button" tabindex="0"
+                 data-media="instagram"
+                 data-src="https://www.instagram.com/reel/DHylTORzWTg/?utm_source=ig_web_copy_link&igsh=aHhtd21oYTdvaGg4"
+                 data-title="Reel — Video two"
+                 aria-label="Open Instagram Reel: Video two">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="https://scontent.cdninstagram.com/v/t51.71878-15/487295902_1009744020494131_2035466263896209978_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=111&ccb=1-7&_nc_sid=18de74&_nc_ohc=WSHW3-KEHooQ7kNvwGgSnua&_nc_oc=AdmfPERTW5EIRiNWxLZvPsdUE9EODdOh4Sy2BAVFO6OsE2bCKLiYOgui9dWHuRUOEvc&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=csGRBKRl5qPFM5J5T8Ktyg&oh=00_AfaRG7UVyACeXzUcTwm0Yrk4f6-HDDN0diXcjeZX4uMsIg&oe=68DAD49E"
+                   alt="Instagram reel thumbnail - Video two"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
+              <div class="play-overlay">
+                <span class="play-btn"><i class="bi bi-instagram fs-2"></i></span>
+              </div>
+            </div>
+            <div class="gallery-caption mt-2">Video two</div>
           </div>
 
           <!-- Another Instagram reel -->
           <div class="col-sm-6 col-lg-4">
-            <div class="media-card" data-media="instagram" data-src="https://www.instagram.com/reel/REEL_ID_2/embed" data-title="Reel — Column rebar QA">
-              <img class="w-100 rounded-4 shadow-soft project-thumb" src="/assets/instagram/thumbs/reel-2.jpg" alt="Instagram reel 2" loading="lazy">
-              <div class="play-overlay rounded-4">
+            <div class="media-card" role="button" tabindex="0"
+                 data-media="instagram"
+                 data-src="https://www.instagram.com/reel/DHyj2PoTWKu/?utm_source=ig_web_copy_link&igsh=NDBoZGs4ZG9vM2dk"
+                 data-title="Reel — Video three"
+                 aria-label="Open Instagram Reel: Video three">
+              <img class="w-100 rounded-4 shadow-soft project-thumb"
+                   src="https://scontent.cdninstagram.com/v/t51.71878-15/486774833_565246322602992_5187428537175127206_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&_nc_cat=102&ccb=1-7&_nc_sid=18de74&_nc_ohc=oEt10Q1mLkgQ7kNvwGugSUY&_nc_oc=AdnRjOu17j69YaVt2StLTAzy9lvOOfHFTUcEEKVDFYcAQo46-O1ZIkrN9-g2our7_e0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=Rvxml9ZYtKtZL-6wdu_7UA&oh=00_AfZeT6SC4qL6mJbzlxqCr3lQsrN66KQyMNBKP9gH9yWYQA&oe=68DAD4BE"
+                   alt="Instagram reel thumbnail - Video three"
+                   decoding="async" loading="lazy"
+                   sizes="(min-width:1200px) 33vw, (min-width:768px) 50vw, 100vw">
+              <div class="play-overlay">
                 <span class="play-btn"><i class="bi bi-instagram fs-2"></i></span>
               </div>
             </div>
-            <div class="gallery-caption mt-2">Column rebar QA</div>
+            <div class="gallery-caption mt-2">Video three</div>
           </div>
         </div>
         <div class="small text-secondary mt-3">
@@ -275,51 +323,67 @@
 </section>
 
 <!-- LIGHTBOX / MEDIA MODAL -->
-<div class="modal fade" id="mediaModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="mediaModal" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="mediaTitle">
   <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content rounded-4">
-      <div class="d-flex align-items-center justify-content-between border-bottom px-3 py-2">
-        <div class="fw-semibold" id="mediaTitle"></div>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-content">
+      <div class="modal-header-lite">
+        <h2 class="modal-title-lite h6" id="mediaTitle"></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close media"></button>
       </div>
+      <!-- Bootstrap aspect ratio wrapper (keeps embeds perfect) -->
       <div class="ratio ratio-16x9" id="mediaContainer"></div>
+      <div id="mediaHelper" class="text-center small py-2 d-none" aria-live="polite"></div>
     </div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FOOTER (year helper target somewhere in your footer) -->
+<div id="footer-placeholder"></div>
 
-<!-- Instagram embed script (required for IG iframes to style correctly) -->
+<!-- Scripts (deferred for faster paint) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 <script async src="https://www.instagram.com/embed.js"></script>
-
-<!-- Your main scripts -->
 <script src="/assets/main.js" defer></script>
+<script src="/assets/footer-loader.js" defer></script>
 
 <script>
   // Year helper (safe-guarded)
   const yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-  // Media Modal logic
+  // Reveal on scroll (IntersectionObserver)
+  (function(){
+    const els = document.querySelectorAll('.reveal,[data-reveal]');
+    if(!('IntersectionObserver' in window)){ els.forEach(el => el.classList.add('is-visible')); return; }
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: .2 });
+    els.forEach(el => io.observe(el));
+  })();
+
+  // Media Modal logic with keyboard support
   (function(){
     const mediaModalEl = document.getElementById('mediaModal');
     const mediaContainer = document.getElementById('mediaContainer');
     const mediaTitle = document.getElementById('mediaTitle');
+    const mediaHelper = document.getElementById('mediaHelper');
     const bsModal = new bootstrap.Modal(mediaModalEl);
+    let lastTrigger = null;
 
     function clearMedia(){
       mediaContainer.innerHTML = "";
+      if(mediaHelper){ mediaHelper.classList.add('d-none'); mediaHelper.innerHTML = ""; }
     }
 
-    document.addEventListener('click', function(e){
-      const card = e.target.closest('.media-card');
-      if(!card) return;
-
+    function openFromCard(card){
       const type = card.getAttribute('data-media'); // "image" | "video" | "instagram"
       const src = card.getAttribute('data-src');
       const title = card.getAttribute('data-title') || '';
-
       clearMedia();
       mediaTitle.textContent = title;
 
@@ -327,9 +391,12 @@
         const img = document.createElement('img');
         img.src = src;
         img.alt = title || 'Image';
+        img.decoding = 'async';
+        img.loading = 'eager';
         img.className = 'w-100 h-100 object-fit-cover rounded-bottom-4';
         mediaContainer.appendChild(img);
         bsModal.show();
+        if(mediaHelper){ mediaHelper.classList.add('d-none'); mediaHelper.innerHTML = ""; }
       }
       else if(type === 'video'){
         const video = document.createElement('video');
@@ -337,34 +404,68 @@
         video.controls = true;
         video.autoplay = true;
         video.playsInline = true;
-        video.muted = true;     // ensures autoplay on most browsers
+        video.muted = true;     // helps autoplay policies
         video.className = 'w-100 h-100 rounded-bottom-4';
         mediaContainer.appendChild(video);
         bsModal.show();
-        // attempt play() after show in case of policies
-        video.play().catch(()=>{ /* ignore */ });
+        video.play?.().catch(()=>{ /* ignore */ });
+        if(mediaHelper){ mediaHelper.classList.add('d-none'); mediaHelper.innerHTML = ""; }
       }
       else if(type === 'instagram'){
-        // Instagram embed (IG controls playback; we open instantly)
         const iframe = document.createElement('iframe');
-        // You can append query params, IG may ignore autoplay flags
-        iframe.src = src;
+        // Normalize common Instagram URLs (reel/post/tv) into /embed form
+        let igSrc = src;
+        let viewUrl = src;
+        try {
+          const url = new URL(src, window.location.origin);
+          const parts = url.pathname.split('/').filter(Boolean);
+          const idx = parts.findIndex(p => p === 'reel' || p === 'p' || p === 'tv');
+          if (idx !== -1 && parts[idx + 1]) {
+            igSrc = `https://www.instagram.com/${parts[idx]}/${parts[idx + 1]}/embed`;
+            viewUrl = `https://www.instagram.com/${parts[idx]}/${parts[idx + 1]}/`;
+          }
+        } catch (e) {
+          if (!/\/embed\/?$/.test(src)) igSrc = src.replace(/\/?$/, '/embed');
+        }
+        iframe.src = igSrc;
         iframe.className = 'w-100 h-100 rounded-bottom-4';
         iframe.style.border = '0';
         iframe.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        if (title) iframe.setAttribute('title', title);
         iframe.loading = 'lazy';
         iframe.referrerPolicy = 'no-referrer-when-downgrade';
         mediaContainer.appendChild(iframe);
         bsModal.show();
+
+        if(mediaHelper){
+          mediaHelper.innerHTML = `<a href="${viewUrl}" target="_blank" rel="noopener" class="link-primary">Having trouble? View on Instagram</a>`;
+          mediaHelper.classList.remove('d-none');
+        }
+      }
+    }
+
+    // Click & keyboard activation
+    document.addEventListener('click', function(e){
+      const card = e.target.closest('.media-card');
+      if(!card) return;
+      lastTrigger = card;
+      openFromCard(card);
+    });
+    document.addEventListener('keydown', function(e){
+      if((e.key === 'Enter' || e.key === ' ') && document.activeElement?.classList.contains('media-card')){
+        e.preventDefault();
+        lastTrigger = document.activeElement;
+        openFromCard(document.activeElement);
       }
     });
 
-    mediaModalEl.addEventListener('hidden.bs.modal', clearMedia);
+    // Restore focus to the trigger when modal closes
+    mediaModalEl.addEventListener('hidden.bs.modal', function(){
+      clearMedia();
+      if(lastTrigger) lastTrigger.focus();
+    });
   })();
 </script>
-
-<!-- Footer loader (keeps your global footer intact) -->
-<div id="footer-placeholder"></div>
-<script src="/assets/footer-loader.js" defer></script>
 </body>
 </html>

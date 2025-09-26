@@ -3,86 +3,634 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Architectural Design — ArunaDevi Builders</title>
-  <meta name="description" content="Concept to GFC with house-plan review for codes/zoning and lifestyle fit.">
+  <title>Architectural Design Services | ArunaDevi Builders</title>
+  <meta name="description" content="Professional architectural design services in Chennai. From concept to GFC drawings, we create functional, aesthetic, and compliant designs tailored to your lifestyle.">
   <link rel="icon" href="/assets/favicon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="/assets/styles.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #1a56db;
+      --primary-dark: #1e429f;
+      --secondary-color: #7e3af2;
+      --accent-color: #0e9f6e;
+      --light-bg: #f8fafc;
+      --dark-text: #1f2937;
+      --medium-text: #6b7280;
+      --light-text: #9ca3af;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-text);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+    }
+    
+    .hero-section {
+      background: linear-gradient(rgba(26, 86, 219, 0.9), rgba(30, 66, 159, 0.9)), url('/assets/architecture-hero.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 120px 0 80px;
+    }
+    
+    .section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      position: relative;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .card-service {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    
+    .card-service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card-service .icon-wrapper {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(26, 86, 219, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .process-step {
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+    }
+    
+    .process-step .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-weight: 600;
+    }
+    
+    .process-step:not(:last-child):after {
+      content: '';
+      position: absolute;
+      top: 60px;
+      right: -50%;
+      width: 100%;
+      height: 2px;
+      background: var(--light-bg);
+      z-index: -1;
+    }
+    
+    .feature-box {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      height: 100%;
+    }
+    
+    .feature-box .icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .portfolio-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    .portfolio-item img {
+      transition: transform 0.5s ease;
+    }
+    
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 30px 20px 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      transform: translateY(0);
+    }
+    
+    .btn-brand {
+      background: var(--primary-color);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-brand:hover {
+      background: var(--primary-dark);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(26, 86, 219, 0.3);
+    }
+    
+    .btn-outline-brand {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 10px 28px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-brand:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    
+    .testimonial-card:before {
+      content: '"';
+      font-size: 80px;
+      color: rgba(26, 86, 219, 0.1);
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      line-height: 1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 20px 0;
+    }
+    
+    .faq-question {
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding-top: 15px;
+      color: var(--medium-text);
+      display: none;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    
+    .cta-section {
+      background: linear-gradient(rgba(26, 86, 219, 0.95), rgba(30, 66, 159, 0.95)), url('/assets/cta-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 80px 0;
+      border-radius: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 100px 0 60px;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .process-step:not(:last-child):after {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
-      <img src="/assets/logo.png" width="36" height="36" alt="Logo">
-      <span class="fw-semibold">ArunaDevi Builders</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/services/turnkey-house-construction.html">Turnkey House Construction</a></li>
-            <li><a class="dropdown-item" href="/services/commercial-construction.html">Commercial Construction</a></li>
-            <li><a class="dropdown-item" href="/services/engineering-and-process.html">Engineering & Process</a></li>
-            <li><a class="dropdown-item" href="/services/materials-and-brands.html">Materials & Brands</a></li>
-            <li><a class="dropdown-item" href="/services/concrete-methods.html">Concrete Methods</a></li>
-            <li><a class="dropdown-item" href="/services/architectural-design.html">Architectural Design</a></li>
-            <li><a class="dropdown-item" href="/services/structural-designing.html">Structural Designing</a></li>
-            <li><a class="dropdown-item" href="/services/building-plan-approval.html">Building Plan Approval</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="/payments.html">Payments</a></li>
-        
-        <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <div id="header-placeholder"></div>
+  <script src="/assets/header-loader.js" defer></script>
 
-<section class="section reveal">
+<!-- Hero Section -->
+<section class="hero-section">
   <div class="container">
-    <h1 class="fw-bold mb-4">Architectural Design</h1>
-    <div class="row align-items-center gy-4 mb-5">
-      <div class="col-lg-5">
-        <img class="w-100 rounded-4 shadow-soft" src="/assets/p1.png" alt="Concept to GFC drawings">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">Architectural Design Tailored to Your Lifestyle</h1>
+        <p class="lead mb-4">We transform your vision into functional, beautiful, and compliant designs that balance aesthetics with practical living.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact-form" class="btn btn-brand">Start Your Design Journey</a>
+          <a href="#portfolio" class="btn btn-outline-light">View Our Work</a>
+        </div>
       </div>
-      <div class="col-lg-7">
-        <h2 class="h4 fw-semibold">Concept → GFC</h2>
-        <p class="text-secondary">Concept to Good-For-Construction drawings, aligning plans with lifestyle fit and project scope.</p>
-        <ul class="text-secondary small mb-0">
-          <li>Measuring-box concrete and QA practices through execution</li>
-          <li>Basement 5–7 ft as per design and groundwater</li>
-          <li>Transparent stage-wise payments</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row align-items-center gy-4 mb-5">
-      <div class="col-lg-5 order-lg-2">
-        <img class="w-100 rounded-4 shadow-soft" src="/assets/p2.png" alt="House-plan review for codes and zoning">
-      </div>
-      <div class="col-lg-7 order-lg-1">
-        <h2 class="h4 fw-semibold">House-plan Review for Codes/Zoning</h2>
-        <p class="text-secondary">Plans reviewed for compliance and site conditions with digital land survey inputs.</p>
-        <ul class="text-secondary small mb-0">
-          <li>Digital land survey</li>
-          <li>Compulsory soil testing (no extra charge)</li>
-        </ul>
+      <div class="col-lg-6 text-center mt-5 mt-lg-0">
+        <img src="/assets/architectural-hero.svg" alt="Architectural Design" class="img-fluid" style="max-height: 400px;">
       </div>
     </div>
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/main.js" defer></script>
-<script>document.getElementById('year').textContent = new Date().getFullYear()</script>
-</body>
-</html>
+<!-- Services Overview -->
+<section class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">Our Architectural Design Services</h2>
+    <p class="text-center text-muted mb-5">From initial concept to Good-for-Construction (GFC) drawings, we provide comprehensive architectural solutions for residential and commercial projects in Chennai.</p>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-pencil-square" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>Concept Design</h4>
+          <p class="text-muted">Creative visualization of your ideas with initial sketches and 3D models to bring your vision to life.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-house-door" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>Space Planning</h4>
+          <p class="text-muted">Optimized layout designs that maximize functionality, flow, and comfort for your specific lifestyle needs.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-building" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>Elevation Design</h4>
+          <p class="text-muted">Aesthetically pleasing exterior designs that complement your surroundings and reflect your personal style.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-file-earmark-check" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>GFC Drawings</h4>
+          <p class="text-muted">Detailed construction-ready drawings with precise dimensions, specifications, and material details.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-clipboard-check" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>Approvals Support</h4>
+          <p class="text-muted">Complete documentation and guidance for CMDA/DTCP approvals and other regulatory requirements.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-service p-4">
+          <div class="icon-wrapper">
+            <i class="bi bi-lightbulb" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+          </div>
+          <h4>Sustainable Design</h4>
+          <p class="text-muted">Environmentally conscious designs focusing on natural light, ventilation, and energy efficiency.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Design Process -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Our Design Process</h2>
+    <p class="text-center text-muted mb-5">A systematic approach to ensure your project progresses smoothly from concept to completion.</p>
+    
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="row">
+          <div class="col-md-6 col-lg-3">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <h5>Consultation & Brief</h5>
+              <p class="text-muted">We discuss your requirements, lifestyle, budget, and site specifics to create a detailed project brief.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3">
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <h5>Concept Development</h5>
+              <p class="text-muted">Initial sketches and 3D visualizations are created to give you a clear vision of the proposed design.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3">
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <h5>Design Development</h5>
+              <p class="text-muted">Refining the design based on your feedback, with detailed plans, elevations, and material selections.</p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3">
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <h5>Final Documentation</h5>
+              <p class="text-muted">Preparation of comprehensive GFC drawings and approval documents ready for construction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">Why Choose Our Architectural Services</h2>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-geo-alt"></i>
+          </div>
+          <h4>Local Expertise</h4>
+          <p class="text-muted">Deep understanding of Chennai's building codes, climate considerations, and architectural styles.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-person-check"></i>
+          </div>
+          <h4>Client-Centric Approach</h4>
+          <p class="text-muted">We prioritize your needs and preferences, ensuring the final design truly reflects your vision.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h4>Compliance Assurance</h4>
+          <p class="text-muted">All designs adhere to local regulations, ensuring smooth approval processes and legal compliance.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-lightning-charge"></i>
+          </div>
+          <h4>Innovative Solutions</h4>
+          <p class="text-muted">Creative problem-solving to maximize space, light, and functionality within your constraints.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-clock-history"></i>
+          </div>
+          <h4>Timely Delivery</h4>
+          <p class="text-muted">Structured processes ensure we meet deadlines without compromising on quality.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-box">
+          <div class="icon">
+            <i class="bi bi-graph-up"></i>
+          </div>
+          <h4>Value Engineering</h4>
+          <p class="text-muted">Smart design choices that optimize costs while maintaining quality and aesthetics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <h2 class="section-title">Our Architectural Portfolio</h2>
+    <p class="text-center text-muted mb-5">A glimpse of our completed architectural design projects in Chennai.</p>
+    
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-item">
+          <img src="/assets/portfolio1.jpg" alt="Modern Residential Design" class="img-fluid w-100">
+          <div class="portfolio-overlay">
+            <h5>Modern Villa Design</h5>
+            <p>Adyar, Chennai</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-item">
+          <img src="/assets/portfolio2.jpg" alt="Contemporary Apartment Design" class="img-fluid w-100">
+          <div class="portfolio-overlay">
+            <h5>Contemporary Apartment</h5>
+            <p>Anna Nagar, Chennai</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-item">
+          <img src="/assets/portfolio3.jpg" alt="Traditional House Design" class="img-fluid w-100">
+          <div class="portfolio-overlay">
+            <h5>Traditional House Design</h5>
+            <p>Mylapore, Chennai</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <a href="/projects.html" class="btn btn-outline-brand">View More Projects</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ Section -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What is included in your architectural design service?</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our comprehensive service includes initial consultation, concept development, detailed drawings (floor plans, elevations, sections), 3D visualizations, material specifications, and GFC (Good for Construction) drawings. We also assist with approval documentation for local authorities.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How long does the architectural design process take?</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>The timeline varies based on project complexity, but typically takes 4-8 weeks from initial consultation to final GFC drawings. This includes time for client feedback and revisions at each stage.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Do you handle building plan approvals?</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we prepare all necessary documentation for CMDA/DTCP approvals and can guide you through the submission process. However, the actual submission is typically done by the client or their authorized representative.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can you work with my existing architect's plans?</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely. We can review, modify, or enhance existing plans to better suit your needs or ensure compliance with current regulations.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What information do I need to provide to get started?</span>
+            <i class="bi bi-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We'll need your site details (survey plan, dimensions, orientation), your requirements (number of rooms, specific needs, budget), and any inspiration images or ideas you have. We guide you through this process during our initial consultation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact-form">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3">Ready to Bring Your Vision to Life?</h2>
+        <p class="lead mb-4">Share your plot details and requirements for a personalized design consultation.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="/contact.html?intent=design-consultation&source=architectural" class="btn btn-light btn-lg">Start Your Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="footer-placeholder"></div>
 <script src="/assets/footer-loader.js" defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // FAQ toggle functionality
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.parentElement;
+      faqItem.classList.toggle('active');
+    });
+  });
+  
+  // Simple scroll animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    revealElements.forEach(element => {
+      observer.observe(element);
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,39 +1,30 @@
-// Load footer component
+// Load footer component once, cleanly
 async function loadFooter() {
   try {
-    // First, remove all existing footers and placeholders
-    document.querySelectorAll('footer, #footer-placeholder').forEach(el => el.remove());
-    
-    // Get the new footer HTML
-    const response = await fetch('/components/footer.html');
-    if (!response.ok) return;
-    
-    const footerHTML = await response.text();
-    
-    // Create a temporary container to parse the HTML
-    const temp = document.createElement('div');
-    temp.innerHTML = footerHTML;
-    const newFooter = temp.querySelector('footer');
-    
-    if (newFooter) {
-      // Add the new footer to the end of the body
-      document.body.appendChild(newFooter);
-      
-      // Update year in footer
-      const yearElement = document.getElementById('year');
-      if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-      }
-    }
-  } catch (error) {
-    console.error('Error loading footer:', error);
+    // Remove existing injected footers/placeholders (but not modal footers, etc.)
+    document.querySelectorAll('footer.footer, #footer-placeholder').forEach(el => el.remove());
+
+    const res = await fetch('/components/footer.html', { cache: 'no-store' });
+    if (!res.ok) return;
+
+    const html = await res.text();
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html.trim();
+
+    const footer = wrap.querySelector('footer.footer');
+    if (!footer) return;
+
+    document.body.appendChild(footer);
+
+    // Set year if not already done by component script (id still useful)
+    const y = document.getElementById('year');
+    if (y && !y.textContent) y.textContent = new Date().getFullYear();
+  } catch (e) {
+    console.error('Error loading footer:', e);
   }
 }
-
-// Make the function globally available
 window.loadFooter = loadFooter;
 
-// Load footer when DOM is loaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', loadFooter);
 } else {

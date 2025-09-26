@@ -12,38 +12,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom navbar-light">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
-      <img src="/assets/logo.png" width="36" height="36" alt="Logo">
-      <span class="fw-semibold">ArunaDevi Builders</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="nav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/services/turnkey-house-construction.html">Turnkey House Construction</a></li>
-            <li><a class="dropdown-item" href="/services/commercial-construction.html">Commercial Construction</a></li>
-            <li><a class="dropdown-item" href="/services/engineering-and-process.html">Engineering & Process</a></li>
-            <li><a class="dropdown-item" href="/services/architectural-design.html">Architectural Design</a></li>
-            <li><a class="dropdown-item" href="/services/structural-designing.html">Structural Designing</a></li>
-            <li><a class="dropdown-item" href="/services/concrete-methods.html">Concrete Methods</a></li>
-            <li><a class="dropdown-item" href="/services/materials-and-brands.html">Materials & Brands</a></li>
-            <li><a class="dropdown-item" href="/services/building-plan-approval.html">Building Plan Approval</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="/payments.html">Payments</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="header-placeholder"></div>
+<script src="/assets/header-loader.js" defer></script>
 
 <!-- Hero / Intro -->
 <section class="section hero reveal">
@@ -58,7 +28,7 @@
         </div>
       </div>
       <div class="col-lg-5 d-none d-lg-block">
-        <img class="w-100 rounded-4 shadow-soft service-hero-img" src="/assets/Vendor%20Logo/Project%20Pics/services1.png" alt="Services overview">
+        <img class="w-100 rounded-4 shadow-soft service-hero-img" src="/assets/services1.png" alt="Services overview">
       </div>
     </div>
   </div>
@@ -261,8 +231,8 @@
           </div>
         </a>
       </div>
-    </div>
-  </div>
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
 </section>
 
 <!-- Contact / Quote Prompt -->
@@ -276,11 +246,15 @@
   </div>
 </section>
 
+  <div id="footer-placeholder"></div>
+  <script src="/assets/footer-loader.js" defer></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/assets/main.js" defer></script>
-<script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/main.js" defer></script>
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+  </script>
+
 </body>
 </html>
-<div id="footer-placeholder"></div>
-<script src="/assets/footer-loader.js" defer></script>
