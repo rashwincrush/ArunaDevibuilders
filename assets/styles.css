@@ -5,8 +5,8 @@
   --brand-50:#eef2ff;
 }
 .text-brand{color:var(--brand)!important;}
-.btn-brand{background:var(--brand); color:#fff; border:0;}
-.btn-brand:hover{background:var(--brand-600);}
+.btn-brand{background:var(--brand) !important; color:#fff !important; border:0 !important;}
+.btn-brand:hover{background:var(--brand-600) !important;}
 .bg-brand-50{background:var(--brand-50);}
 .section{padding:64px 0;}
 .hero{background: radial-gradient(1200px 600px at 80% -10%, var(--brand-50), transparent), linear-gradient(180deg, #fff, #f8fafc);}
@@ -247,11 +247,36 @@ footer a:hover {
 footer .bi { 
   font-size: 1.2rem; 
 }
-/* Footer global helpers (lightweight; safe across pages) */
-.footer .container.footer-container { padding-left: .75rem; padding-right: .75rem; }
-.footer .footer-row { --bs-gutter-x: .85rem; --bs-gutter-y: .75rem; }
-@media (max-width: 991.98px){ .footer .footer-row { --bs-gutter-x: .75rem; } }
+/* Global button text alignment and visibility fixes */
+.btn, .btn-brand, .btn-outline-primary, .btn-outline-secondary, .btn-outline-light, .btn-link {
+  text-align: center !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  text-decoration: none !important;
+}
 
-/* Ensure footer columns align to top and have compact lists */
-footer .row > [class*="col-"] { display:flex; flex-direction:column; justify-content:flex-start; }
-footer ul li.mb-1 { margin-bottom: .25rem !important; }
+.btn-brand {
+  background: var(--brand) !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.btn-brand:hover {
+  background: var(--brand-600) !important;
+  color: #fff !important;
+}
+
+/* Ensure button text is always visible and properly aligned */
+.btn {
+  position: relative !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}

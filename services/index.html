@@ -48,9 +48,73 @@
 <section id="how-it-works" class="section reveal pt-0">
   <div class="container">
     <div class="text-center mb-5">
-      <span class="badge bg-brand-soft text-brand mb-3">Our Process</span>
-      <h2 class="fw-bold mb-3">How It Works</h2>
+      <div class="position-relative">
+        <span class="badge-enhanced px-4 py-2 rounded-pill shadow-sm mb-4 d-inline-block" style="background: var(--brand); color: white;">
+          <i class="bi bi-gear-fill me-1"></i>Our Process
+        </span>
+        <h2 class="display-6 fw-bold mb-3 position-relative">
+          How It Works
+          <span class="underline-accent"></span>
+        </h2>
+      </div>
       <p class="text-muted mb-0">Our proven 6-step construction process ensures quality and transparency at every stage</p>
+
+      <style>
+        .badge-enhanced {
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          animation: badge-appear 0.6s ease-out;
+        }
+
+        .underline-accent {
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, var(--brand), var(--brand-600));
+          border-radius: 2px;
+          animation: underline-grow 0.8s ease-out 0.3s both;
+        }
+
+        .display-6 {
+          font-size: 2.25rem;
+          color: #1f2937;
+        }
+
+        @keyframes badge-appear {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes underline-grow {
+          from {
+            width: 0;
+          }
+          to {
+            width: 80px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .display-6 {
+            font-size: 1.875rem;
+          }
+
+          .underline-accent {
+            width: 60px;
+          }
+        }
+      </style>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
